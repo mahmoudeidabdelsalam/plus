@@ -107,3 +107,14 @@ span.status {
     }
   }
 }
+
+h5.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px !important;
+}
+
+.card-body {
+  overflow: hidden;
+}

@@ -7,6 +7,7 @@ function all_graphics($data){
   $per_page = !empty($per_page) ? $per_page : 10;
   $page = !empty($page) ? $page : true;
   $searchText = !empty($searchText) ? $searchText : false;
+  $category_id = !empty($category) ? $category : 0;
   
   $args = array(
     'post_type'        => 'graphics',
@@ -18,6 +19,17 @@ function all_graphics($data){
   if($searchText != false) {
     $args['s'] = $searchText;
   }
+
+  if ( $category_id != false):
+    $args['tax_query'] = array(
+      array(
+        'taxonomy' => 'graphics-category',
+        'field'    => "term_id",
+        'terms'    => $category_id,
+      ),
+    );
+  endif;
+
 
   $posts = new WP_Query( $args );
 
@@ -66,6 +78,11 @@ add_action('rest_api_init' , function(){
         }
       ),
       'page' => array(
+        'validate_callback' => function($param,$request,$key){
+          return is_numeric($param);
+        }
+      ),
+      'category' => array(
         'validate_callback' => function($param,$request,$key){
           return is_numeric($param);
         }

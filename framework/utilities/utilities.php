@@ -38,7 +38,7 @@ class Utilities{
       elseif ($default_image):
         $output = $default_image;
       else:
-        $output = Utilities::resources_path('images/placeholder.jpg');
+        $output = Utilities::resources_path('/assets/images/limit-download.png');
       endif;
 
       if ($echo) {

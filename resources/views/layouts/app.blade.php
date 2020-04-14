@@ -7,7 +7,7 @@
     @endif
 
     @php do_action('get_header') @endphp
-    @include('partials/header/header')
+    @include('partials/header')
     <div class="wrap" role="document" id="panel">
       <div class="content">
         <main class="main">

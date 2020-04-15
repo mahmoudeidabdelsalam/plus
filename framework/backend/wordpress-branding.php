@@ -49,14 +49,16 @@ function custom_login_logo() {
   <?php
 }
 add_action('login_head', 'custom_login_logo');
+
 function siteurl_login() {
   return get_bloginfo('url');
 }
 add_filter('login_headerurl', 'siteurl_login');
+
 function login_headertitle() {
   return get_bloginfo('name');
 }
-add_filter('login_headertext', 'login_headertext');
+add_filter('login_headertext', 'login_headertitle');
 /**
 * Function removes an wp-icon from the Toolbar
 * @param type $wp_admin_bar

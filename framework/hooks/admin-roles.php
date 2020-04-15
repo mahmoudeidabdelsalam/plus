@@ -168,33 +168,6 @@ if( array_intersect($allowed_roles, $user->roles ) ) {
  }
 
 
- /**
- * override output of author drop down to include ALL user roles 
- */ 
-add_filter('wp_dropdown_users', 'include_all_users');
-function include_all_users($output)
-{
-  //set the $post global for checking user against author 
-  global $post; 
-  $args = array('role__in' => array('administrator', 'vendor', 'author')); 
-  $users = get_users($args);
-	$current_user =  wp_get_current_user();
-
-    $output = '<select id="post_author_override" name="post_author_override" class="">';
-    //Loop through each user
-    foreach($users as $user){
-			if($post->post_author == $user->ID) {
-				$select =  'selected';
-			} else {
-				$select = '';
-			}
-        $output .= '<option value="'.$user->ID.'"'.$select.'>'.$user->user_login.'</option>';
-    }
-    $output .= '</select>';
-
-    return $output;
-}
-
 $user = wp_get_current_user();
 $allowed_roles = array('seo');
 if( array_intersect($allowed_roles, $user->roles ) ) {  

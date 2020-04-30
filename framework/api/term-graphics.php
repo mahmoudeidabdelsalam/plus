@@ -21,9 +21,18 @@ function get_graphics_category($data){
     $categories_parent = [];
 
     foreach ($categories as $category) {
+        $icon = get_field('icon_term', 'graphics-category_' . $category->term_id);
+
+        if ($icon) {
+          $icon = $icon;
+        }else {
+          $icon = get_theme_file_uri().'/dist/images/upload.png';
+        }
+
         $categories_parent[] = [
           'id' => $category->term_id,
           'name' => html_entity_decode( $category->name ),
+          'icon' => $icon,
         ];
       }
    

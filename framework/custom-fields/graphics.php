@@ -52,6 +52,25 @@ acf_add_local_field_group(array(
 	'key' => 'group_5ea9bc3aa0799',
 	'title' => 'Icon Terms',
 	'fields' => array(
+    array(
+      'key' => 'field_5d7b4123131231312312312988ef2b70',
+      'label' => 'column number',
+      'name' => 'column_number',
+      'type' => 'text',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array(
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => '2',
+      'placeholder' => '',
+      'prepend' => '',
+      'append' => '',
+      'maxlength' => '',
+    ),    
 		array(
 			'key' => 'field_5ea9bc40f695e',
 			'label' => 'icon term',

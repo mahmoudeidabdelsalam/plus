@@ -22,6 +22,7 @@ function get_graphics_category($data){
 
     foreach ($categories as $category) {
         $icon = get_field('icon_term', 'graphics-category_' . $category->term_id);
+        $column_number = get_field('column_number', 'graphics-category_' . $category->term_id);
 
         if ($icon) {
           $icon = $icon;
@@ -33,6 +34,7 @@ function get_graphics_category($data){
           'id' => $category->term_id,
           'name' => html_entity_decode( $category->name ),
           'icon' => $icon,
+          'column' => $column_number,
         ];
       }
    

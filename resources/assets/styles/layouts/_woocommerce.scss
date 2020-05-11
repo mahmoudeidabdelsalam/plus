@@ -2414,7 +2414,7 @@ i.fa.fa-caret-up {
   height: 100%;
 }
 
-.nav-link.active:before {
+.side-tabs .nav-link.active:before {
   content: "";
   width: 8px;
   height: 35px;
@@ -2427,7 +2427,7 @@ i.fa.fa-caret-up {
   top: 4px;
 }
 
-.nav-link.active {
+.side-tabs .nav-link.active {
   position: relative;
 }
 

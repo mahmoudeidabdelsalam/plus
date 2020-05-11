@@ -331,22 +331,6 @@ form#publish_product {
       border: none !important;
     }
   }
-
-  .select2-selection--multiple {
-    .select2-selection__rendered {
-      li {
-        &:first-child {
-          border: none !important;
-          color: rgb(127, 200, 253) !important;
-          margin: 7px 10px 0 0;
-
-          span.select2-selection__choice__remove {
-            display: none;
-          }
-        }
-      }
-    }
-  }
 }
 
 .select2-container--disabled {

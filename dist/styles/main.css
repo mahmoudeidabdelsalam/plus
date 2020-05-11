@@ -39948,8 +39948,9 @@ i.fa.fa-caret-up {
 
 /* line 2417, resources/assets/styles/layouts/_woocommerce.scss */
 
-.nav-link.active:before,
-.banner .nav a.active:before {
+.side-tabs .nav-link.active:before,
+.side-tabs .banner .nav a.active:before,
+.banner .nav .side-tabs a.active:before {
   content: "";
   width: 8px;
   height: 35px;
@@ -39967,8 +39968,9 @@ i.fa.fa-caret-up {
 
 /* line 2430, resources/assets/styles/layouts/_woocommerce.scss */
 
-.nav-link.active,
-.banner .nav a.active {
+.side-tabs .nav-link.active,
+.side-tabs .banner .nav a.active,
+.banner .nav .side-tabs a.active {
   position: relative;
 }
 

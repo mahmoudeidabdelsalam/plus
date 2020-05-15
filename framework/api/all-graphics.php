@@ -40,6 +40,11 @@ function all_graphics($data){
       if(!empty($terms)){
         $post->Category= $terms[0]->name;
       }
+      
+      $file = get_field('file_graphics' , $post->ID);
+      $ext = pathinfo($file, PATHINFO_EXTENSION);
+
+      $post->Type = $ext;
       $post->Id           = $post->ID;
       $post->Name         = htmlspecialchars_decode( get_the_title($post->ID) );
       $post->Content = get_field('file_graphics' , $post->ID);

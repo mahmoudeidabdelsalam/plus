@@ -68,6 +68,8 @@
               </div>
             </div>
           @endwhile
+        @else 
+              <div class="alert alert-info">Oops, Item Not Found.</div>          
         @endif
       </div>
 
@@ -89,6 +91,7 @@
           'posts_per_page' => 20,
           'paged' => $paged,
           'post_author' => $current_user->ID,
+          'post_status' => $status,
           'tax_query' => array(
             array(
               'taxonomy' => 'graphics-category',
@@ -116,6 +119,8 @@
                 </div>
               </div>
             @endwhile
+          @else 
+              <div class="alert alert-info">Oops, Item Not Found.</div>  
           @endif
         </div>
 

@@ -76,3 +76,22 @@
   </div>
 </div>
 @endsection
+
+
+<style>
+  .add-item-plus span.select2 {
+    background: transparent !important;
+    border: none;
+    outline: none !important;
+    margin-top: 10px;
+  }
+  form#publish_product input {
+    min-height: 40px !important;
+    background: #e6edf2 !important;
+    border: 1px solid rgba(61, 69, 82, 0.15) !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    border-radius: 5px !important;
+    padding: 0 10px;
+  }  
+</style>

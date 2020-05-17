@@ -144,7 +144,7 @@
       var thumbnail   = $('input[name="thumbnail"]').val();
       var file_url    = $('input[name="file_url"]').val();
       var title       = $('input[name="title"]').val();
-      var main_scat   = $('#main_scat').val();
+      var main_scat   = $('input[name="main_scat"]').val();
       var tags        = $('#tags').val();
       
       if(thumbnail == '' || file_url == '' || title == '' || main_scat == ''  || tags == '' ) {
@@ -171,7 +171,7 @@
             $('#thumbnails').val('');
             $('#file_item').val('');
             $('#title').val('');
-            $('#main_scat').val('');
+            $('input[name="main_scat"]').val('');
             $('#tags').val('');
             $('.profile-pic').attr('src', '<?= get_theme_file_uri()."/dist/images/cover-image.png"; ?>');
             $('.name-files').html('Main file');

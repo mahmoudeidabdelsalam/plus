@@ -13547,6 +13547,7 @@ Router.prototype.loadEvents = function loadEvents () {
   init: function init() {
     // JavaScript to be fired on all pages
 
+
     __WEBPACK_IMPORTED_MODULE_0_aos_dist_aos___default.a.init();
 
     $('[data-toggle="tooltip"]').tooltip();

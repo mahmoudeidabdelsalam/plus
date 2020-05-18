@@ -2,7 +2,7 @@
   Template Name: Plus Template
 --}}
 
-@extends('layouts.app')
+@extends('layouts.item')
 
 @section('content')
 

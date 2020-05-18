@@ -31664,688 +31664,6 @@ h3.the-headline-border {
   background-image: url(/app/themes/plus/dist/images/union.svg);
 }
 
-/* line 1, resources/assets/styles/layouts/_footer.scss */
-
-footer {
-  -webkit-transition: background 0.3s, border 0.3s, border-radius 0.3s, -webkit-box-shadow 0.3s;
-  transition: background 0.3s, border 0.3s, border-radius 0.3s, -webkit-box-shadow 0.3s;
-  -o-transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
-  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
-  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s, -webkit-box-shadow 0.3s;
-  padding: 0 50px;
-  min-height: 265px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-/* line 9, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget h3 {
-  color: rgba(255, 255, 255, 0.52);
-  font-size: 12px;
-  font-weight: normal;
-  letter-spacing: 0.11px;
-}
-
-/* line 16, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper {
-  margin: 30px 0;
-}
-
-/* line 19, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper h3.gform_title,
-footer .gform_widget .gform_wrapper span.gform_description {
-  display: none;
-}
-
-/* line 24, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper label.gfield_label {
-  display: none !important;
-}
-
-/* line 28, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper form {
-  position: relative;
-}
-
-/* line 31, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper form input {
-  background-color: #3d4552;
-  border-color: rgba(30, 109, 251, 0.52);
-  border-width: 0;
-  border-radius: 50px 50px 50px 50px;
-  padding: 20px !important;
-  height: 45px !important;
-}
-
-/* line 40, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper form .gform_heading {
-  display: none;
-}
-
-/* line 44, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper form .gform_footer {
-  padding: 0;
-  width: auto;
-  white-space: nowrap;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0 !important;
-}
-
-/* line 53, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper form .gform_footer button {
-  height: 45px !important;
-  line-height: 41px !important;
-  padding: 0 20px !important;
-  font-size: 14px;
-  background: #1e6dfb;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  -webkit-box-sizing: border-box !important;
-          box-sizing: border-box !important;
-  border-radius: 25px !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-}
-
-/* line 67, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper .validation_error {
-  display: none;
-}
-
-/* line 71, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper .gfield_error {
-  padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  background: transparent !important;
-}
-
-/* line 78, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper .validation_message {
-  position: absolute;
-}
-
-/* line 82, resources/assets/styles/layouts/_footer.scss */
-
-footer .gform_widget .gform_wrapper div.ginput_container {
-  margin: 0;
-}
-
-/* line 89, resources/assets/styles/layouts/_footer.scss */
-
-footer .navbar-footer .navbar {
-  -webkit-box-align: self-end;
-      -ms-flex-align: self-end;
-          align-items: self-end;
-}
-
-/* line 93, resources/assets/styles/layouts/_footer.scss */
-
-footer .navbar-footer .navbar .menu-item .nav-link,
-footer .navbar-footer .navbar .menu-item .banner .nav a,
-.banner .nav footer .navbar-footer .navbar .menu-item a {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* line 98, resources/assets/styles/layouts/_footer.scss */
-
-footer .navbar-footer .navbar .menu-item .nav-link[data-toggle="dropdown"],
-footer .navbar-footer .navbar .menu-item .banner .nav a[data-toggle="dropdown"],
-.banner .nav footer .navbar-footer .navbar .menu-item a[data-toggle="dropdown"] {
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* line 104, resources/assets/styles/layouts/_footer.scss */
-
-footer .navbar-footer .navbar .menu-item .nav-link span,
-footer .navbar-footer .navbar .menu-item .banner .nav a span,
-.banner .nav footer .navbar-footer .navbar .menu-item a span {
-  display: none;
-}
-
-/* line 109, resources/assets/styles/layouts/_footer.scss */
-
-footer .navbar-footer .navbar .menu-item ul.dropdown-menu {
-  display: block !important;
-  padding: 0;
-  left: 0 !important;
-  background: transparent;
-  border: none;
-  position: static;
-}
-
-/* line 117, resources/assets/styles/layouts/_footer.scss */
-
-footer .navbar-footer .navbar .menu-item ul.dropdown-menu .menu-item {
-  display: block;
-}
-
-/* line 120, resources/assets/styles/layouts/_footer.scss */
-
-footer .navbar-footer .navbar .menu-item ul.dropdown-menu .menu-item .nav-link,
-footer .navbar-footer .navbar .menu-item ul.dropdown-menu .menu-item .banner .nav a,
-.banner .nav footer .navbar-footer .navbar .menu-item ul.dropdown-menu .menu-item a {
-  color: #a3a6ab;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-@media (max-width: 767.98px) {
-  /* line 132, resources/assets/styles/layouts/_footer.scss */
-
-  footer.content-info {
-    display: none;
-  }
-}
-
-/* line 138, resources/assets/styles/layouts/_footer.scss */
-
-section.copyright {
-  color: rgba(255, 255, 255, 0.26);
-  padding: 0 50px 12px;
-  background-color: #3d4552;
-  font-size: 14px;
-}
-
-@media (max-width: 767.98px) {
-  /* line 138, resources/assets/styles/layouts/_footer.scss */
-
-  section.copyright {
-    padding: 20px 0;
-  }
-
-  /* line 147, resources/assets/styles/layouts/_footer.scss */
-
-  section.copyright .col-md-6 {
-    margin: 10px auto;
-  }
-}
-
-/* line 154, resources/assets/styles/layouts/_footer.scss */
-
-section.copyright .social-icons-ql li a {
-  background-color: #656d7a;
-  width: 35px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 35px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 7px;
-}
-
-/* line 163, resources/assets/styles/layouts/_footer.scss */
-
-section.copyright .social-icons-ql li a i {
-  font-size: 15px !important;
-}
-
-/* line 170, resources/assets/styles/layouts/_footer.scss */
-
-section.copyright span.footer-secure-payment {
-  font-size: 12px;
-  line-height: 14px;
-  text-align: center;
-  letter-spacing: 0.116946px;
-  text-transform: capitalize;
-  color: #eff6fa;
-  display: inline-block;
-}
-
-/* line 179, resources/assets/styles/layouts/_footer.scss */
-
-section.copyright span.footer-secure-payment::after {
-  content: "";
-  height: 40px;
-  width: 1px;
-  background: #282f39;
-  display: inline-block;
-  margin: 0 20px;
-  top: 15px;
-  position: relative;
-}
-
-/* line 192, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser,
-div#SignupUser {
-  /* stylelint-disable */
-  /* stylelint-enable */
-}
-
-/* line 198, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .register-user p input[type="text"],
-div#LoginUser .register-user p input[type="password"],
-div#LoginUser .register-user p input[type="email"],
-div#LoginUser .lost_reset_password p input[type="text"],
-div#LoginUser .lost_reset_password p input[type="password"],
-div#LoginUser .lost_reset_password p input[type="email"],
-div#LoginUser form#loginform p input[type="text"],
-div#LoginUser form#loginform p input[type="password"],
-div#LoginUser form#loginform p input[type="email"],
-div#SignupUser .register-user p input[type="text"],
-div#SignupUser .register-user p input[type="password"],
-div#SignupUser .register-user p input[type="email"],
-div#SignupUser .lost_reset_password p input[type="text"],
-div#SignupUser .lost_reset_password p input[type="password"],
-div#SignupUser .lost_reset_password p input[type="email"],
-div#SignupUser form#loginform p input[type="text"],
-div#SignupUser form#loginform p input[type="password"],
-div#SignupUser form#loginform p input[type="email"] {
-  display: inline-block;
-  width: 100%;
-  height: 40px;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 16px;
-  font-weight: 100;
-  padding: 0 10px;
-}
-
-/* line 211, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .register-user p.login-remember,
-div#LoginUser .lost_reset_password p.login-remember,
-div#LoginUser form#loginform p.login-remember,
-div#SignupUser .register-user p.login-remember,
-div#SignupUser .lost_reset_password p.login-remember,
-div#SignupUser form#loginform p.login-remember {
-  display: inline-block;
-  font-weight: 400;
-  font-size: 14px;
-  padding-left: 3px;
-  color: #777777;
-}
-
-/* line 218, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .register-user p.login-remember input,
-div#LoginUser .lost_reset_password p.login-remember input,
-div#LoginUser form#loginform p.login-remember input,
-div#SignupUser .register-user p.login-remember input,
-div#SignupUser .lost_reset_password p.login-remember input,
-div#SignupUser form#loginform p.login-remember input {
-  border-radius: 0;
-  height: 20px;
-  width: 20px;
-  margin: 0 5px 0;
-  border: 2px solid #dddddd;
-  background: #fff;
-  position: relative;
-  vertical-align: middle;
-}
-
-/* line 229, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .register-user p.login-remember label,
-div#LoginUser .lost_reset_password p.login-remember label,
-div#LoginUser form#loginform p.login-remember label,
-div#SignupUser .register-user p.login-remember label,
-div#SignupUser .lost_reset_password p.login-remember label,
-div#SignupUser form#loginform p.login-remember label {
-  display: block !important;
-}
-
-/* line 234, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .register-user p.login-submit,
-div#LoginUser .lost_reset_password p.login-submit,
-div#LoginUser form#loginform p.login-submit,
-div#SignupUser .register-user p.login-submit,
-div#SignupUser .lost_reset_password p.login-submit,
-div#SignupUser form#loginform p.login-submit {
-  margin: 0;
-}
-
-/* line 237, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .register-user p.login-submit input#wp-submit,
-div#LoginUser .lost_reset_password p.login-submit input#wp-submit,
-div#LoginUser form#loginform p.login-submit input#wp-submit,
-div#SignupUser .register-user p.login-submit input#wp-submit,
-div#SignupUser .lost_reset_password p.login-submit input#wp-submit,
-div#SignupUser form#loginform p.login-submit input#wp-submit {
-  padding: 6px 20px;
-  background: -webkit-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
-  background: -o-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
-  background: linear-gradient(165.74deg, #6b73ff -0.5%, #000dff 100%);
-  -webkit-box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
-          box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
-  border-radius: 27.5px;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 18px;
-  color: #fff;
-  min-width: 155px;
-  height: 39px;
-  margin: auto;
-  display: block;
-}
-
-/* line 254, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .register-user .woocommerce-Button,
-div#LoginUser .lost_reset_password .woocommerce-Button,
-div#LoginUser form#loginform .woocommerce-Button,
-div#SignupUser .register-user .woocommerce-Button,
-div#SignupUser .lost_reset_password .woocommerce-Button,
-div#SignupUser form#loginform .woocommerce-Button {
-  padding: 6px 20px;
-  background: -webkit-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
-  background: -o-linear-gradient(284.26deg, #6b73ff -0.5%, #000dff 100%);
-  background: linear-gradient(165.74deg, #6b73ff -0.5%, #000dff 100%);
-  -webkit-box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
-          box-shadow: 0 7px 11px rgba(0, 96, 255, 0.64);
-  border-radius: 27.5px;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 18px;
-  color: #fff;
-  min-width: 155px;
-  height: 39px;
-  margin: auto;
-  display: block;
-}
-
-/* line 270, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-footer,
-div#SignupUser .modal-footer {
-  border: none;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 21px;
-  color: #818990;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  min-height: 100px;
-}
-
-/* line 281, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-footer a,
-div#SignupUser .modal-footer a {
-  color: #1e6dfb;
-  border: none !important;
-  font-weight: bold;
-  margin: 0 10px;
-}
-
-/* line 287, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-footer a:hover,
-div#LoginUser .modal-footer a.active,
-div#LoginUser .modal-footer a:focus,
-div#SignupUser .modal-footer a:hover,
-div#SignupUser .modal-footer a.active,
-div#SignupUser .modal-footer a:focus {
-  background: transparent !important;
-  border: none;
-  color: #0d1d80 !important;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  outline: none;
-}
-
-/* line 298, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-footer .nav,
-div#SignupUser .modal-footer .nav {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border: none;
-}
-
-/* line 304, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-footer .nav li.nav-item,
-div#LoginUser .modal-footer .banner .nav li,
-.banner div#LoginUser .modal-footer .nav li,
-div#SignupUser .modal-footer .nav li.nav-item,
-div#SignupUser .modal-footer .banner .nav li,
-.banner div#SignupUser .modal-footer .nav li {
-  position: relative;
-  padding: 0 20px;
-}
-
-/* line 308, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-footer .nav li.nav-item::after,
-div#LoginUser .modal-footer .banner .nav li::after,
-.banner div#LoginUser .modal-footer .nav li::after,
-div#SignupUser .modal-footer .nav li.nav-item::after,
-div#SignupUser .modal-footer .banner .nav li::after,
-.banner div#SignupUser .modal-footer .nav li::after {
-  content: "";
-  background: #fff;
-  float: right;
-  width: 1px;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-/* line 320, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-footer .nav li.nav-item:last-child::after,
-div#LoginUser .modal-footer .banner .nav li:last-child::after,
-.banner div#LoginUser .modal-footer .nav li:last-child::after,
-div#SignupUser .modal-footer .nav li.nav-item:last-child::after,
-div#SignupUser .modal-footer .banner .nav li:last-child::after,
-.banner div#SignupUser .modal-footer .nav li:last-child::after {
-  display: none;
-}
-
-/* line 328, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-header,
-div#SignupUser .modal-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 30px auto;
-  border: none;
-  position: relative;
-}
-
-/* line 337, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-header .close,
-div#SignupUser .modal-header .close {
-  position: absolute;
-  top: -20px;
-  right: 0;
-}
-
-/* line 343, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-header .modal-title,
-div#SignupUser .modal-header .modal-title {
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 23px;
-  color: rgba(61, 69, 82, 0.8);
-  mix-blend-mode: normal;
-  margin-top: 15px;
-}
-
-/* line 353, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-content,
-div#SignupUser .modal-content {
-  border-radius: 10px;
-  overflow: hidden;
-  border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-/* line 360, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-content .description .title-description,
-div#SignupUser .modal-content .description .title-description {
-  font-size: 33px;
-  line-height: 39px;
-  letter-spacing: 0.04px;
-  color: rgba(249, 250, 251, 0.82);
-  font-weight: 300;
-}
-
-/* line 368, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-content .description .text-description,
-div#SignupUser .modal-content .description .text-description {
-  font-size: 20px;
-  line-height: 29px;
-  letter-spacing: 0.04px;
-  color: #fff;
-  margin-top: 30px;
-}
-
-/* line 376, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .modal-content .description .min-description,
-div#SignupUser .modal-content .description .min-description {
-  margin: 0;
-  font-size: 14px;
-}
-
-/* line 383, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .switch-to-lost,
-div#SignupUser .switch-to-lost {
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 18px;
-  color: rgba(30, 109, 251, 0.88);
-  position: absolute;
-  bottom: 80px;
-  right: 18px;
-  cursor: pointer;
-}
-
-/* line 394, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .switch-to-login,
-div#SignupUser .switch-to-login {
-  cursor: pointer;
-  color: #1e6dfb;
-  width: 100%;
-  text-align: center;
-  display: inline-block;
-}
-
-/* line 403, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser label,
-div#SignupUser label {
-  display: none;
-}
-
-/* line 408, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .register-message span,
-div#SignupUser .register-message span {
-  width: 100%;
-  display: inline-block;
-  margin: 0;
-  text-transform: lowercase;
-  font-size: 14px;
-  padding: 5px 10px;
-}
-
-/* line 418, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .Conditions,
-div#SignupUser .Conditions {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  cursor: pointer;
-}
-
-/* line 423, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .Conditions label,
-div#SignupUser .Conditions label {
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 18px;
-  color: #9ca4ac;
-  margin: 2px 8px;
-}
-
-/* line 433, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .form-row-first,
-div#SignupUser .form-row-first {
-  padding: 0 2% 0 0;
-}
-
-/* line 437, resources/assets/styles/layouts/_footer.scss */
-
-div#LoginUser .form-row-last,
-div#LoginUser .form-row-first,
-div#SignupUser .form-row-last,
-div#SignupUser .form-row-first {
-  width: 50%;
-  float: left;
-  margin: 20px 0;
-}
-
 /* line 9, resources/assets/styles/layouts/_header.scss */
 
 header.banner {
@@ -40362,16 +39680,17 @@ div#results-items .media .card .card-body {
 div#results-items .media .card-body h5 {
   border-right: 1px solid rgba(0, 0, 0, 0.08);
   padding: 20px 40px;
-  text-align: center !important;
+  text-align: left !important;
+  width: 50%;
 }
 
-/* line 2697, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2698, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#results-items .media .img-top-item {
   width: 20%;
 }
 
-/* line 2701, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2702, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#results-items .media .img-top-item img {
   max-width: 100%;
@@ -40379,7 +39698,7 @@ div#results-items .media .img-top-item img {
   width: auto;
 }
 
-/* line 2707, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2708, resources/assets/styles/layouts/_woocommerce.scss */
 
 .card-event {
   margin-left: auto;
@@ -40394,7 +39713,7 @@ div#results-items .media .img-top-item img {
           align-items: center;
 }
 
-/* line 2714, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2715, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-event {
   font-size: 24px;
@@ -40402,19 +39721,19 @@ div#results-items .media .img-top-item img {
   cursor: pointer;
 }
 
-/* line 2720, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2721, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-edit i {
   color: #1e6dfb;
 }
 
-/* line 2724, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2725, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-deleted i {
   color: #f77e7e;
 }
 
-/* line 2728, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2729, resources/assets/styles/layouts/_woocommerce.scss */
 
 .plus-all-item .card-event {
   position: absolute;
@@ -40435,7 +39754,7 @@ div#results-items .media .img-top-item img {
   transition-property: all;
 }
 
-/* line 2740, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2741, resources/assets/styles/layouts/_woocommerce.scss */
 
 .plus-all-item:hover .card-event {
   opacity: 1;
@@ -40447,7 +39766,7 @@ div#results-items .media .img-top-item img {
   transition-property: all;
 }
 
-/* line 2746, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2747, resources/assets/styles/layouts/_woocommerce.scss */
 
 .plus-all-item .card-event .item-deleted {
   background: rgba(245, 26, 26, 0.38);
@@ -40458,7 +39777,7 @@ div#results-items .media .img-top-item img {
   padding: 2px 10px;
 }
 
-/* line 2754, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2755, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-deleted span {
   font-size: 16px;
@@ -40471,7 +39790,7 @@ div#results-items .media .img-top-item img {
   top: -2px;
 }
 
-/* line 2765, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2766, resources/assets/styles/layouts/_woocommerce.scss */
 
 .term-parent a,
 .term-parent i {
@@ -40482,19 +39801,19 @@ div#results-items .media .img-top-item img {
   text-transform: capitalize;
 }
 
-/* line 2774, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2775, resources/assets/styles/layouts/_woocommerce.scss */
 
 .product-child ul .list-group-item.term-parent {
   padding: 0 15px !important;
 }
 
-/* line 2778, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2779, resources/assets/styles/layouts/_woocommerce.scss */
 
 body.single-post {
   background: #EFF6FA;
 }
 
-/* line 2782, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2783, resources/assets/styles/layouts/_woocommerce.scss */
 
 .user-info {
   font-size: 16px;
@@ -40506,7 +39825,7 @@ body.single-post {
   margin-bottom: 20px;
 }
 
-/* line 2792, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2793, resources/assets/styles/layouts/_woocommerce.scss */
 
 .label-term {
   font-size: 16px;
@@ -40516,7 +39835,7 @@ body.single-post {
   color: #1E6DFB;
 }
 
-/* line 2800, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2801, resources/assets/styles/layouts/_woocommerce.scss */
 
 .head h1 {
   font-weight: bold;
@@ -40527,7 +39846,7 @@ body.single-post {
   color: #3D4552;
 }
 
-/* line 2809, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2810, resources/assets/styles/layouts/_woocommerce.scss */
 
 .date-info time {
   font-size: 16px;
@@ -40537,27 +39856,27 @@ body.single-post {
   color: rgba(0, 0, 0, 0.4);
 }
 
-/* line 2817, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2818, resources/assets/styles/layouts/_woocommerce.scss */
 
 .wp-post-thumbnail {
   border-radius: 8px;
   margin: 40px 0 24px !important;
 }
 
-/* line 2822, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2823, resources/assets/styles/layouts/_woocommerce.scss */
 
 #wpcomm .wc-field-textarea .wpdiscuz-textarea-wrap {
   background: #fff;
   border: none;
 }
 
-/* line 2827, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2828, resources/assets/styles/layouts/_woocommerce.scss */
 
 #wpcomm .avatar {
   border-radius: 100% !important;
 }
 
-/* line 2831, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2832, resources/assets/styles/layouts/_woocommerce.scss */
 
 #wpcomm .wc-comment .wc-comment-right {
   background: #FFFFFF;
@@ -40566,20 +39885,20 @@ body.single-post {
   border-radius: 8px;
 }
 
-/* line 2837, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2838, resources/assets/styles/layouts/_woocommerce.scss */
 
 #wpcomm .wc-comment-header {
   border: none;
 }
 
-/* line 2841, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2842, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related-single .media img {
   border-radius: 5px;
   width: 100px;
 }
 
-/* line 2846, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2847, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related-single .media {
   background-color: #fff;
@@ -40590,7 +39909,7 @@ body.single-post {
   padding: 10px;
 }
 
-/* line 2854, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2855, resources/assets/styles/layouts/_woocommerce.scss */
 
 .related-single li.media .card-title {
   font-size: 16px;
@@ -40600,7 +39919,7 @@ body.single-post {
   color: #3D4552 !important;
 }
 
-/* line 2862, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2863, resources/assets/styles/layouts/_woocommerce.scss */
 
 h3.headline-related {
   font-weight: bold;
@@ -40612,7 +39931,7 @@ h3.headline-related {
   padding: 0;
 }
 
-/* line 2872, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2873, resources/assets/styles/layouts/_woocommerce.scss */
 
 .elements-share p {
   font-size: 13px;
@@ -40622,7 +39941,7 @@ h3.headline-related {
   color: rgba(0, 0, 0, 0.4);
 }
 
-/* line 2880, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2881, resources/assets/styles/layouts/_woocommerce.scss */
 
 .elements-share {
   position: absolute;
@@ -40630,7 +39949,7 @@ h3.headline-related {
   text-align: center;
 }
 
-/* line 2886, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2887, resources/assets/styles/layouts/_woocommerce.scss */
 
 .elements-share .sharing-buttons {
   background: #FFFFFF;
@@ -40652,7 +39971,7 @@ h3.headline-related {
   color: #1E6DFB;
 }
 
-/* line 2899, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2900, resources/assets/styles/layouts/_woocommerce.scss */
 
 .description p {
   font-size: 21px;
@@ -40660,7 +39979,7 @@ h3.headline-related {
   font-weight: 300;
 }
 
-/* line 2905, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2906, resources/assets/styles/layouts/_woocommerce.scss */
 
 .description strong {
   color: blue;
@@ -40668,7 +39987,7 @@ h3.headline-related {
   font-size: 29px;
 }
 
-/* line 2911, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2912, resources/assets/styles/layouts/_woocommerce.scss */
 
 .description ul li::before {
   content: "\2022";
@@ -40680,7 +39999,7 @@ h3.headline-related {
   font-size: 22px;
 }
 
-/* line 2921, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2922, resources/assets/styles/layouts/_woocommerce.scss */
 
 .description img {
   border-radius: 12px;
@@ -40690,25 +40009,25 @@ h3.headline-related {
   margin: 35px 0px 35px 0px !important;
 }
 
-/* line 2928, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2929, resources/assets/styles/layouts/_woocommerce.scss */
 
 .description ul {
   list-style: none;
 }
 
-/* line 2932, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2933, resources/assets/styles/layouts/_woocommerce.scss */
 
 header.banner .logos {
   max-width: 130px;
 }
 
-/* line 2936, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2937, resources/assets/styles/layouts/_woocommerce.scss */
 
 body.template-blog {
   background: #EFF6FA;
 }
 
-/* line 2940, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2941, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-blog .card {
   background: transparent !important;
@@ -40717,7 +40036,7 @@ body.template-blog {
           box-shadow: none !important;
 }
 
-/* line 2946, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2947, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-blog .card p.label time {
   font-size: 13px;
@@ -40728,7 +40047,7 @@ body.template-blog {
   opacity: 0.5;
 }
 
-/* line 2955, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2956, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-blog .card h5.card-title {
   font-weight: bold;
@@ -40740,7 +40059,7 @@ body.template-blog {
   margin: 8px 0;
 }
 
-/* line 2965, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2966, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-blog .card p.card-text {
   font-size: 14px;
@@ -40750,7 +40069,7 @@ body.template-blog {
   opacity: 0.5;
 }
 
-/* line 2973, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2974, resources/assets/styles/layouts/_woocommerce.scss */
 
 .bg-blogs {
   position: absolute;
@@ -40760,13 +40079,13 @@ body.template-blog {
   top: -150px;
 }
 
-/* line 2981, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2982, resources/assets/styles/layouts/_woocommerce.scss */
 
 body.template-blog .custom-header {
   margin-bottom: 150px;
 }
 
-/* line 2985, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2986, resources/assets/styles/layouts/_woocommerce.scss */
 
 body.template-blog h2 {
   font-weight: bold;
@@ -40777,13 +40096,13 @@ body.template-blog h2 {
   padding: 0 30px 20px;
 }
 
-/* line 2994, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2995, resources/assets/styles/layouts/_woocommerce.scss */
 
 section.widget_text iframe {
   max-width: 100%;
 }
 
-/* line 2998, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 2999, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content {
   background: #FFFFFF;
@@ -40792,7 +40111,7 @@ div#ReportAProblem .modal-content {
   border-radius: 8px;
 }
 
-/* line 3004, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3005, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content .modal-header h2 {
   font-size: 24px;
@@ -40803,7 +40122,7 @@ div#ReportAProblem .modal-content .modal-header h2 {
   color: #282F39;
 }
 
-/* line 3013, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3014, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content input,
 div#ReportAProblem .modal-content textarea {
@@ -40815,7 +40134,7 @@ div#ReportAProblem .modal-content textarea {
   padding: 10px !important;
 }
 
-/* line 3022, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3023, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content .ginput_container_fileupload {
   width: auto;
@@ -40823,7 +40142,7 @@ div#ReportAProblem .modal-content .ginput_container_fileupload {
   margin: 0;
 }
 
-/* line 3028, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3029, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content input[type="file"] {
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
@@ -40833,7 +40152,7 @@ div#ReportAProblem .modal-content input[type="file"] {
   position: relative;
 }
 
-/* line 3035, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3036, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content input[type="file"]:after {
   content: "browse";
@@ -40853,7 +40172,7 @@ div#ReportAProblem .modal-content input[type="file"]:after {
   color: #1E6DFB;
 }
 
-/* line 3053, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3054, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content .gform_footer.top_label button {
   background: -webkit-linear-gradient(281.65deg, #6B73FF -0.5%, #000DFF 100%);
@@ -40865,13 +40184,13 @@ div#ReportAProblem .modal-content .gform_footer.top_label button {
   height: 40px;
 }
 
-/* line 3061, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3062, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content .gform_footer.top_label {
   text-align: center;
 }
 
-/* line 3065, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3066, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content label.gfield_label {
   font-size: 13px !important;
@@ -40883,7 +40202,7 @@ div#ReportAProblem .modal-content label.gfield_label {
   font-weight: 300 !important;
 }
 
-/* line 3075, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3076, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content button.cancel {
   font-style: normal;
@@ -40900,7 +40219,7 @@ div#ReportAProblem .modal-content button.cancel {
   display: block;
 }
 
-/* line 3090, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3091, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content .gfield_contains_required:before {
   content: "" !important;
@@ -40915,25 +40234,25 @@ div#ReportAProblem .modal-content .gfield_contains_required:before {
   border-radius: 100%;
 }
 
-/* line 3103, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3104, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content .gfield_contains_required {
   position: relative;
 }
 
-/* line 3107, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3108, resources/assets/styles/layouts/_woocommerce.scss */
 
 div#ReportAProblem .modal-content .gform_wrapper ul li.gfield {
   padding-left: 10px;
 }
 
-/* line 3111, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3112, resources/assets/styles/layouts/_woocommerce.scss */
 
 .summary .sl-wrapper .sl-icon small {
   display: none;
 }
 
-/* line 3115, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3116, resources/assets/styles/layouts/_woocommerce.scss */
 
 #dropdownMenuCat::after,
 #dropdownMenuFilter::after {
@@ -40949,7 +40268,7 @@ div#ReportAProblem .modal-content .gform_wrapper ul li.gfield {
   top: 8px;
 }
 
-/* line 3128, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3129, resources/assets/styles/layouts/_woocommerce.scss */
 
 span.custom-onsale {
   background: #FFB800;
@@ -40969,7 +40288,7 @@ span.custom-onsale {
   z-index: 9;
 }
 
-/* line 3145, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3146, resources/assets/styles/layouts/_woocommerce.scss */
 
 span.custom-onsale:before {
   content: "";
@@ -40981,7 +40300,7 @@ span.custom-onsale:before {
   left: 1px;
 }
 
-/* line 3155, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3156, resources/assets/styles/layouts/_woocommerce.scss */
 
 .col-offer a {
   background-color: #1e6dfb;
@@ -40992,7 +40311,7 @@ span.custom-onsale:before {
   margin: 0 30px;
 }
 
-/* line 3164, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3165, resources/assets/styles/layouts/_woocommerce.scss */
 
 p.full-access span {
   font-size: 15px;
@@ -41005,7 +40324,7 @@ p.full-access span {
   font-weight: normal;
 }
 
-/* line 3175, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3176, resources/assets/styles/layouts/_woocommerce.scss */
 
 p.full-access a {
   background: -webkit-linear-gradient(1.33deg, #F2C94C 0.18%, #FFA800 101.64%);
@@ -41025,7 +40344,7 @@ p.full-access a {
   color: rgba(1, 1, 1, 0.61);
 }
 
-/* line 3191, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3192, resources/assets/styles/layouts/_woocommerce.scss */
 
 #LimitDownload .modal-content {
   background: #FFFFFF;
@@ -41035,7 +40354,7 @@ p.full-access a {
 }
 
 @media (max-width: 991.98px) {
-  /* line 3198, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3199, resources/assets/styles/layouts/_woocommerce.scss */
 
   .billing-custom {
     -webkit-box-ordinal-group: 3;
@@ -41044,13 +40363,13 @@ p.full-access a {
     margin-top: 3rem;
   }
 
-  /* line 3203, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3204, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce-info::before {
     left: 8px !important;
   }
 
-  /* line 3207, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3208, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce-error,
   .woocommerce-info,
@@ -41058,7 +40377,7 @@ p.full-access a {
     padding: 20px !important;
   }
 
-  /* line 3213, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3214, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce-form-coupon-toggle .woocommerce-info .showcoupon {
     font-size: 16px !important;
@@ -41066,13 +40385,13 @@ p.full-access a {
     margin-left: 15px !important;
   }
 
-  /* line 3219, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3220, resources/assets/styles/layouts/_woocommerce.scss */
 
   form.checkout_coupon.woocommerce-form-coupon {
     display: block !important;
   }
 
-  /* line 3223, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3224, resources/assets/styles/layouts/_woocommerce.scss */
 
   .summary-custom table.shop_table tr td,
   .summary-custom table.shop_table tr th {
@@ -41080,7 +40399,7 @@ p.full-access a {
     font-size: 15px !important;
   }
 
-  /* line 3229, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3230, resources/assets/styles/layouts/_woocommerce.scss */
 
   .summary-custom td.product-name a img {
     max-width: 40px !important;
@@ -41089,27 +40408,27 @@ p.full-access a {
     margin: 10px 0 !important;
   }
 
-  /* line 3236, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3237, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce-privacy-policy-text ul {
     padding: 0 25px;
   }
 
-  /* line 3240, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3241, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce table.shop_table_responsive thead,
   .woocommerce-page table.shop_table_responsive thead {
     display: table-header-group !important;
   }
 
-  /* line 3245, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3246, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce table.shop_table_responsive tr,
   .woocommerce-page table.shop_table_responsive tr {
     display: table-row !important;
   }
 
-  /* line 3250, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3251, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce #content table.cart .product-thumbnail,
   .woocommerce table.cart .product-thumbnail,
@@ -41118,13 +40437,13 @@ p.full-access a {
     display: block !important;
   }
 
-  /* line 3257, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3258, resources/assets/styles/layouts/_woocommerce.scss */
 
   .form-cart-woocommerce .box-cart td.product-thumbnail {
     padding: 0 0 !important;
   }
 
-  /* line 3261, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3262, resources/assets/styles/layouts/_woocommerce.scss */
 
   .form-cart-woocommerce .box-cart table.cart img {
     height: auto !important;
@@ -41132,26 +40451,26 @@ p.full-access a {
     display: block;
   }
 
-  /* line 3267, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3268, resources/assets/styles/layouts/_woocommerce.scss */
 
   .form-cart-woocommerce .box-cart td.product-thumbnail {
     padding: 10px 0 !important;
   }
 
-  /* line 3271, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3272, resources/assets/styles/layouts/_woocommerce.scss */
 
   .form-cart-woocommerce .box-cart {
     margin: 20px 0 40px;
   }
 
-  /* line 3275, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3276, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce table.shop_table_responsive tr td::before,
   .woocommerce-page table.shop_table_responsive tr td::before {
     display: none;
   }
 
-  /* line 3280, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3281, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce table.shop_table_responsive tr td,
   .woocommerce-page table.shop_table_responsive tr td {
@@ -41159,33 +40478,33 @@ p.full-access a {
     text-align: left !important;
   }
 
-  /* line 3286, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3287, resources/assets/styles/layouts/_woocommerce.scss */
 
   .form-cart-woocommerce .box-cart td.product-name {
     padding: 0px !important;
   }
 
-  /* line 3290, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3291, resources/assets/styles/layouts/_woocommerce.scss */
 
   .btn-coupon {
     display: none;
   }
 
-  /* line 3294, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3295, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce table.shop_table_responsive tbody th,
   .woocommerce-page table.shop_table_responsive tbody th {
     display: table-cell !important;
   }
 
-  /* line 3299, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3300, resources/assets/styles/layouts/_woocommerce.scss */
 
   .woocommerce table.shop_table_responsive tbody th,
   .woocommerce-page table.shop_table_responsive tbody th {
     display: table-cell !important;
   }
 
-  /* line 3304, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3305, resources/assets/styles/layouts/_woocommerce.scss */
 
   .form-cart-woocommerce .box-cart td.product-name a {
     font-size: 11px;
@@ -41195,7 +40514,7 @@ p.full-access a {
     line-height: 15px;
   }
 
-  /* line 3312, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3313, resources/assets/styles/layouts/_woocommerce.scss */
 
   td.product-price {
     font-size: 14px !important;
@@ -41204,14 +40523,14 @@ p.full-access a {
 }
 
 @media (min-width: 768px) {
-  /* line 3319, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3320, resources/assets/styles/layouts/_woocommerce.scss */
 
   .card-columns {
     -webkit-column-gap: 50px;
             column-gap: 50px;
   }
 
-  /* line 3323, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3324, resources/assets/styles/layouts/_woocommerce.scss */
 
   .card-columns .card {
     margin-bottom: 50px;
@@ -41219,7 +40538,7 @@ p.full-access a {
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-  /* line 3328, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3329, resources/assets/styles/layouts/_woocommerce.scss */
 
   .card-columns {
     -webkit-column-count: 2;
@@ -41228,7 +40547,7 @@ p.full-access a {
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
-  /* line 3328, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3329, resources/assets/styles/layouts/_woocommerce.scss */
 
   .card-columns {
     -webkit-column-count: 2;
@@ -41236,7 +40555,7 @@ p.full-access a {
   }
 }
 
-/* line 3338, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3339, resources/assets/styles/layouts/_woocommerce.scss */
 
 div.nsl-container .nsl-button-default {
   font-size: 16px !important;
@@ -41252,25 +40571,25 @@ div.nsl-container .nsl-button-default {
   border-radius: 20px !important;
 }
 
-/* line 3351, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3352, resources/assets/styles/layouts/_woocommerce.scss */
 
 div.nsl-container-block .nsl-container-buttons a {
   margin: 25px auto 0 !important;
 }
 
-/* line 3355, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3356, resources/assets/styles/layouts/_woocommerce.scss */
 
 div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container {
   background: transparent !important;
 }
 
-/* line 3360, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3361, resources/assets/styles/layouts/_woocommerce.scss */
 
 .grid-custom .grid-item {
   opacity: 0.8;
 }
 
-/* line 3363, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3364, resources/assets/styles/layouts/_woocommerce.scss */
 
 .grid-custom .grid-item.is-visible {
   -webkit-transition: opacity 1s ease-in-out;
@@ -41279,7 +40598,7 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
   opacity: 1;
 }
 
-/* line 3370, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3371, resources/assets/styles/layouts/_woocommerce.scss */
 
 .spinner {
   position: absolute;
@@ -41298,7 +40617,7 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
   pointer-events: none;
 }
 
-/* line 3383, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3384, resources/assets/styles/layouts/_woocommerce.scss */
 
 .cube1,
 .cube2 {
@@ -41310,7 +40629,7 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
      animation: sk-cubemove 1.8s infinite ease-in-out;
 }
 
-/* line 3392, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3393, resources/assets/styles/layouts/_woocommerce.scss */
 
 .cube2 {
   -webkit-animation-delay: -0.9s;
@@ -41400,31 +40719,31 @@ div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container
   }
 }
 
-/* line 3442, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3443, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce .quantity .qty {
   display: none;
 }
 
-/* line 3446, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3447, resources/assets/styles/layouts/_woocommerce.scss */
 
 input[name='update_cart'] {
   display: none !important;
 }
 
-/* line 3451, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3452, resources/assets/styles/layouts/_woocommerce.scss */
 
 button[name='update_cart'] {
   display: none !important;
 }
 
-/* line 3455, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3456, resources/assets/styles/layouts/_woocommerce.scss */
 
 .download .card-link * {
   display: none;
 }
 
-/* line 3459, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3460, resources/assets/styles/layouts/_woocommerce.scss */
 
 .download .card-link .somdn-download-wrap,
 .download .card-link .somdn-download-wrap *,
@@ -41437,13 +40756,13 @@ button[name='update_cart'] {
   font-size: 11px;
 }
 
-/* line 3470, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3471, resources/assets/styles/layouts/_woocommerce.scss */
 
 .review-and-download .download {
   background-color: transparent !important;
 }
 
-/* line 3474, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3475, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card {
   background: #F9F9F9 !important;
@@ -41454,7 +40773,7 @@ button[name='update_cart'] {
   padding: 0;
 }
 
-/* line 3481, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3482, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card button {
   border: none !important;
@@ -41469,7 +40788,7 @@ button[name='update_cart'] {
   text-align: left;
 }
 
-/* line 3494, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3495, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card .card-header {
   background: transparent !important;
@@ -41480,7 +40799,7 @@ button[name='update_cart'] {
   padding: 10px;
 }
 
-/* line 3502, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3503, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card .card-header i {
   margin-left: auto;
@@ -41488,7 +40807,7 @@ button[name='update_cart'] {
   color: #646464;
 }
 
-/* line 3509, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3510, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card button:hover {
   outline: none;
@@ -41496,7 +40815,7 @@ button[name='update_cart'] {
           box-shadow: none;
 }
 
-/* line 3515, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3516, resources/assets/styles/layouts/_woocommerce.scss */
 
 .accordion .card button:focus {
   outline: none;
@@ -41504,7 +40823,7 @@ button[name='update_cart'] {
           box-shadow: none;
 }
 
-/* line 3522, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3523, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card .dropdown-item {
   font-size: 14px;
@@ -41516,7 +40835,7 @@ button[name='update_cart'] {
   font-weight: 300;
 }
 
-/* line 3533, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3534, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card ul.list-unstyled li a,
 .by-filter .accordion .card ul.comment-list li a {
@@ -41532,21 +40851,21 @@ button[name='update_cart'] {
   margin-top: 10px;
 }
 
-/* line 3542, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3543, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card ul.list-unstyled li:last-child a,
 .by-filter .accordion .card ul.comment-list li:last-child a {
   border: none !important;
 }
 
-/* line 3546, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3547, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card ul.list-unstyled li a.active,
 .by-filter .accordion .card ul.comment-list li a.active {
   font-weight: bold;
 }
 
-/* line 3550, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3551, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card ul.list-unstyled li.term-parent a,
 .by-filter .accordion .card ul.comment-list li.term-parent a {
@@ -41557,14 +40876,14 @@ button[name='update_cart'] {
   color: #000;
 }
 
-/* line 3559, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3560, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .accordion .card .term-parent i {
   position: relative;
   margin-right: 10px;
 }
 
-/* line 3565, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3566, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter.fixed {
   position: fixed !important;
@@ -41572,43 +40891,43 @@ button[name='update_cart'] {
   width: 23%;
 }
 
-/* line 3571, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3572, resources/assets/styles/layouts/_woocommerce.scss */
 
 .by-filter .card-body {
   padding: 0 1rem;
 }
 
-/* line 3576, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3577, resources/assets/styles/layouts/_woocommerce.scss */
 
 .grid .grid-item {
   margin-bottom: 40px !important;
 }
 
-/* line 3580, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3581, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-card .card-overlay .card-link p {
   font-size: 15px;
 }
 
-/* line 3584, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3585, resources/assets/styles/layouts/_woocommerce.scss */
 
 .item-card .card-overlay .post-edit-link {
   font-size: 15px;
 }
 
-/* line 3588, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3589, resources/assets/styles/layouts/_woocommerce.scss */
 
 nav.navbar.navbar-expand-lg.navbar-dark.bg-gray-dark {
   background-color: #282F39;
 }
 
-/* line 3592, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3593, resources/assets/styles/layouts/_woocommerce.scss */
 
 form#searchform {
   border-radius: 5px;
 }
 
-/* line 3596, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3597, resources/assets/styles/layouts/_woocommerce.scss */
 
 input#autoblogs {
   font-size: 14px;
@@ -41616,7 +40935,7 @@ input#autoblogs {
   font-weight: 400 !important;
 }
 
-/* line 3602, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3603, resources/assets/styles/layouts/_woocommerce.scss */
 
 .text-silver {
   font-size: 14px;
@@ -41625,13 +40944,13 @@ input#autoblogs {
   color: #9098a2;
 }
 
-/* line 3609, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3610, resources/assets/styles/layouts/_woocommerce.scss */
 
 .fixed-top-header .dropdown {
   padding: 6px 15px 6px 10px;
 }
 
-/* line 3613, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3614, resources/assets/styles/layouts/_woocommerce.scss */
 
 a.checkout-button.button.alt.wc-forward {
   background: -webkit-linear-gradient(279.04deg, #6b73ff -0.5%, #000dff 100%);
@@ -41647,7 +40966,7 @@ a.checkout-button.button.alt.wc-forward {
   max-width: 321px;
 }
 
-/* line 3626, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3627, resources/assets/styles/layouts/_woocommerce.scss */
 
 table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents {
   background: #FFFFFF;
@@ -41659,7 +40978,7 @@ table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents {
   border-radius: 5px;
 }
 
-/* line 3635, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3636, resources/assets/styles/layouts/_woocommerce.scss */
 
 #add_payment_method table.cart img,
 .woocommerce-cart table.cart img,
@@ -41667,7 +40986,7 @@ table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents {
   width: 104px;
 }
 
-/* line 3641, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3642, resources/assets/styles/layouts/_woocommerce.scss */
 
 .buy-x1 {
   background-color: aquamarine;
@@ -41677,20 +40996,20 @@ table.shop_table.shop_table_responsive.cart.woocommerce-cart-form__contents {
   margin: 11px;
 }
 
-/* line 3650, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3651, resources/assets/styles/layouts/_woocommerce.scss */
 
 td.xoo-cp-ptitle a {
   white-space: nowrap;
   margin-left: 14px;
 }
 
-/* line 3655, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3656, resources/assets/styles/layouts/_woocommerce.scss */
 
 .added_to_cart.wc-forward {
   display: none !important;
 }
 
-/* line 3659, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3660, resources/assets/styles/layouts/_woocommerce.scss */
 
 .card {
   background: white !important;
@@ -41700,7 +41019,7 @@ td.xoo-cp-ptitle a {
   border-radius: 7px;
 }
 
-/* line 3666, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3667, resources/assets/styles/layouts/_woocommerce.scss */
 
 .bg-white.bg-images {
   border-radius: 0px !important;
@@ -41708,25 +41027,25 @@ td.xoo-cp-ptitle a {
           box-shadow: none !important;
 }
 
-/* line 3671, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3672, resources/assets/styles/layouts/_woocommerce.scss */
 
 .download {
   background: cornsilk;
 }
 
-/* line 3675, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3676, resources/assets/styles/layouts/_woocommerce.scss */
 
 .review-and-download {
   padding-right: 10px;
 }
 
-/* line 3679, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3680, resources/assets/styles/layouts/_woocommerce.scss */
 
 .card-overlay {
   border-radius: 0px !important;
 }
 
-/* line 3683, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3684, resources/assets/styles/layouts/_woocommerce.scss */
 
 h5.card-title.font-weight-400 {
   font-size: 14px !important;
@@ -41735,7 +41054,7 @@ h5.card-title.font-weight-400 {
   margin-bottom: 25px !important;
 }
 
-/* line 3690, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3691, resources/assets/styles/layouts/_woocommerce.scss */
 
 nav.woocommerce-MyAccount-navigation {
   background: white !important;
@@ -41743,14 +41062,14 @@ nav.woocommerce-MyAccount-navigation {
   -webkit-box-shadow: 0px 1px 2px #0000004d;
 }
 
-/* line 3696, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3697, resources/assets/styles/layouts/_woocommerce.scss */
 
 li.woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--members-area.is-active {
   background: #1d6dfb !important;
   border-radius: 0px 0px 5px 5px;
 }
 
-/* line 3701, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3702, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce-info {
   background: white;
@@ -41760,7 +41079,7 @@ li.woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--
   border-top-color: #1d6dfb;
 }
 
-/* line 3708, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3709, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce-error::before,
 .woocommerce-info::before,
@@ -41771,13 +41090,13 @@ li.woocommerce-MyAccount-navigation-link.woocommerce-MyAccount-navigation-link--
   color: #ff9900;
 }
 
-/* line 3717, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3718, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce-notices-wrapper {
   text-align: center;
 }
 
-/* line 3721, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3722, resources/assets/styles/layouts/_woocommerce.scss */
 
 ul.woocommerce-error {
   display: inline-block;
@@ -41788,7 +41107,7 @@ ul.woocommerce-error {
   text-align: left;
 }
 
-/* line 3730, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3731, resources/assets/styles/layouts/_woocommerce.scss */
 
 a.button.wc-forward {
   border-radius: 50px;
@@ -41800,7 +41119,7 @@ a.button.wc-forward {
 
 /* checkout page style*/
 
-/* line 3742, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3743, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce-form-coupon-toggle .woocommerce-info {
   background: white;
@@ -41812,7 +41131,7 @@ a.button.wc-forward {
   font-weight: 300;
 }
 
-/* line 3751, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3752, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce-form-coupon-toggle .woocommerce-error::before,
 .woocommerce-info::before,
@@ -41823,7 +41142,7 @@ a.button.wc-forward {
   font-weight: 900;
 }
 
-/* line 3760, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3761, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce-form-coupon-toggle .woocommerce-info .showcoupon {
   background: #2c72fb45;
@@ -41836,7 +41155,7 @@ a.button.wc-forward {
   font-weight: 400;
 }
 
-/* line 3772, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3773, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce-billing-fields h3:before {
   font-family: "woocommerce" !important;
@@ -41846,7 +41165,7 @@ a.button.wc-forward {
   margin-right: 8px;
 }
 
-/* line 3780, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3781, resources/assets/styles/layouts/_woocommerce.scss */
 
 .col-1 {
   padding: 20px;
@@ -41858,20 +41177,20 @@ a.button.wc-forward {
   border-top-width: 4px !important;
 }
 
-/* line 3789, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3790, resources/assets/styles/layouts/_woocommerce.scss */
 
 .woocommerce-checkout-review-order {
   display: inline-block;
   width: 100%;
 }
 
-/* line 3794, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3795, resources/assets/styles/layouts/_woocommerce.scss */
 
 h3#order_review_heading {
   display: none;
 }
 
-/* line 3798, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3799, resources/assets/styles/layouts/_woocommerce.scss */
 
 #add_payment_method #payment div.payment_box::before,
 .woocommerce-cart #payment div.payment_box::before,
@@ -41879,44 +41198,44 @@ h3#order_review_heading {
   display: none;
 }
 
-/* line 3805, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3806, resources/assets/styles/layouts/_woocommerce.scss */
 
 button#place_order {
   color: #fff;
 }
 
-/* line 3809, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3810, resources/assets/styles/layouts/_woocommerce.scss */
 
 .items-categories {
   min-height: 1800px;
 }
 
-/* line 3813, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3814, resources/assets/styles/layouts/_woocommerce.scss */
 
 .user-images h3 {
   display: none;
 }
 
-/* line 3817, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3818, resources/assets/styles/layouts/_woocommerce.scss */
 
 .user-images h3 + table.form-table {
   display: none;
 }
 
-/* line 3821, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3822, resources/assets/styles/layouts/_woocommerce.scss */
 
 .custom-pay div#collapseExample {
   display: block;
 }
 
-/* line 3825, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3826, resources/assets/styles/layouts/_woocommerce.scss */
 
 .product-list,
 .product-grid {
   display: none;
 }
 
-/* line 3830, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3831, resources/assets/styles/layouts/_woocommerce.scss */
 
 .jet-button__instance span {
   font-family: "Roboto", roboto;
@@ -41925,7 +41244,7 @@ button#place_order {
   letter-spacing: 0.2px;
 }
 
-/* line 3837, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3838, resources/assets/styles/layouts/_woocommerce.scss */
 
 .jet-button__instance {
   border-radius: 35px;
@@ -41935,7 +41254,7 @@ button#place_order {
   background-image: linear-gradient(150deg, #6b73ff 10%, #000dff 91%);
 }
 
-/* line 3843, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3844, resources/assets/styles/layouts/_woocommerce.scss */
 
 .jet-button__plane.jet-button__plane-normal {
   background-color: transparent;
@@ -41944,19 +41263,19 @@ button#place_order {
   background-image: linear-gradient(150deg, #6b73ff 10%, #000dff 91%);
 }
 
-/* line 3848, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3849, resources/assets/styles/layouts/_woocommerce.scss */
 
 .product-term li a[href*="studio"] {
   display: none;
 }
 
-/* line 3852, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3853, resources/assets/styles/layouts/_woocommerce.scss */
 
 section.block-about {
   min-height: 1200px;
 }
 
-/* line 3856, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3857, resources/assets/styles/layouts/_woocommerce.scss */
 
 .customer-download .review-and-download .download button:focus {
   -webkit-box-shadow: none;
@@ -41964,7 +41283,7 @@ section.block-about {
   outline: none;
 }
 
-/* line 3861, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3862, resources/assets/styles/layouts/_woocommerce.scss */
 
 .button-green {
   min-width: 225px;
@@ -41975,20 +41294,20 @@ section.block-about {
   border-radius: 30px;
 }
 
-/* line 3868, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3869, resources/assets/styles/layouts/_woocommerce.scss */
 
 .is-hidden {
   display: none;
 }
 
-/* line 3872, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3873, resources/assets/styles/layouts/_woocommerce.scss */
 
 .she-header .is-hidden {
   display: block;
 }
 
 @media screen and (max-width: 782px) {
-  /* line 3877, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3878, resources/assets/styles/layouts/_woocommerce.scss */
 
   .fixed-button-purchase {
     position: fixed;
@@ -42001,34 +41320,34 @@ section.block-about {
     background-image: linear-gradient(160deg, #1adb72 4%, #10b151 100%);
   }
 
-  /* line 3886, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3887, resources/assets/styles/layouts/_woocommerce.scss */
 
   .fixed-button-purchase a {
     width: 100%;
   }
 
-  /* line 3890, resources/assets/styles/layouts/_woocommerce.scss */
+  /* line 3891, resources/assets/styles/layouts/_woocommerce.scss */
 
   .addthis-smartlayers {
     display: none;
   }
 }
 
-/* line 3895, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3896, resources/assets/styles/layouts/_woocommerce.scss */
 
 .navbar-item ul.sub {
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-/* line 3900, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3901, resources/assets/styles/layouts/_woocommerce.scss */
 
 .navbar-item ul li {
   display: inline-block !important;
   float: none;
 }
 
-/* line 3905, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3906, resources/assets/styles/layouts/_woocommerce.scss */
 
 .navbar-item ul li ul.sub {
   overflow-y: hidden;
@@ -42037,7 +41356,7 @@ section.block-about {
 
 /* width */
 
-/* line 3911, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3912, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -42046,7 +41365,7 @@ section.block-about {
 
 /* Track */
 
-/* line 3917, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3918, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar-track {
   background: #dfdfdf;
@@ -42054,7 +41373,7 @@ section.block-about {
 
 /* Handle */
 
-/* line 3922, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3923, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar-thumb {
   background: #4e8afc;
@@ -42062,19 +41381,19 @@ section.block-about {
 
 /* Handle on hover */
 
-/* line 3927, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3928, resources/assets/styles/layouts/_woocommerce.scss */
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
-/* line 3931, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3932, resources/assets/styles/layouts/_woocommerce.scss */
 
 .container.blogs {
   margin: 100px auto;
 }
 
-/* line 3935, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3936, resources/assets/styles/layouts/_woocommerce.scss */
 
 label.custom-control-head {
   font-weight: bold;
@@ -42089,7 +41408,7 @@ label.custom-control-head {
   color: #282F39;
 }
 
-/* line 3944, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3945, resources/assets/styles/layouts/_woocommerce.scss */
 
 label.custom-control-label {
   font-style: normal;
@@ -42108,7 +41427,7 @@ label.custom-control-label {
   text-transform: capitalize;
 }
 
-/* line 3957, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3958, resources/assets/styles/layouts/_woocommerce.scss */
 
 .custom-head-inline {
   display: -webkit-inline-box;
@@ -42118,7 +41437,7 @@ label.custom-control-label {
   padding-right: 1.5rem;
 }
 
-/* line 3963, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3964, resources/assets/styles/layouts/_woocommerce.scss */
 
 .add-item-plus li.select2-search {
   -webkit-box-ordinal-group: 2;
@@ -42126,7 +41445,7 @@ label.custom-control-label {
           order: 1;
 }
 
-/* line 3967, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3968, resources/assets/styles/layouts/_woocommerce.scss */
 
 ul.select2-selection__rendered {
   display: -webkit-box !important;
@@ -42137,7 +41456,7 @@ ul.select2-selection__rendered {
   padding: 0 !important;
 }
 
-/* line 3973, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3974, resources/assets/styles/layouts/_woocommerce.scss */
 
 ul.select2-selection__rendered li {
   -webkit-box-ordinal-group: 3;
@@ -42145,7 +41464,7 @@ ul.select2-selection__rendered li {
           order: 2;
 }
 
-/* line 3977, resources/assets/styles/layouts/_woocommerce.scss */
+/* line 3978, resources/assets/styles/layouts/_woocommerce.scss */
 
 li.select2-selection__choice {
   background: #D2E2FE;

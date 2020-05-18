@@ -49,9 +49,6 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'sage'),
-        'user_navigation' => __('Customer Navigation', 'sage'),
-        'templates_navigation' => __('Templates Navigation', 'sage'),
-        'items_navigation' => __('Taxonomy Product Navigation', 'sage'),
         'footer_navigation' => __('Footer Home Navigation', 'sage')
     ]);
 

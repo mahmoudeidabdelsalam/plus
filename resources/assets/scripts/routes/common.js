@@ -6,6 +6,7 @@ export default {
   init() {
     // JavaScript to be fired on all pages
 
+
     AOS.init();
 
     $('[data-toggle="tooltip"]').tooltip();

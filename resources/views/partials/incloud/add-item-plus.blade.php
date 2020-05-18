@@ -19,9 +19,11 @@
           <div class="custom-control custom-head custom-head-inline">
             <label class="custom-control-head">Choose Category</label>
           </div>
+        @php $counter = 0; @endphp
         @foreach ($terms as $term)
+        @php $counter++; @endphp
           <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="{{ $term->term_id }}" name="main_scat" value="{{ $term->term_id }}" class="custom-control-input">
+            <input type="radio" id="{{ $term->term_id }}" name="main_scat" value="{{ $term->term_id }}" class="custom-control-input" {{ ($counter == 1)? 'checked':'' }}>
             <label class="custom-control-label" for="{{ $term->term_id }}">{{ $term->name }}</label>
           </div>
         @endforeach
@@ -144,10 +146,10 @@
       var thumbnail   = $('input[name="thumbnail"]').val();
       var file_url    = $('input[name="file_url"]').val();
       var title       = $('input[name="title"]').val();
-      var main_scat   = $('input[name="main_scat"]').val();
       var tags        = $('#tags').val();
+      var main_scat   = $('input[name="main_scat"]:checked').val();
       
-      if(thumbnail == '' || file_url == '' || title == '' || main_scat == ''  || tags == '' ) {
+      if(thumbnail == '' || file_url == '' || title == '' || tags == '' ) {
         $("#errors").show();
       } else {
         $.ajax({
@@ -171,7 +173,7 @@
             $('#thumbnails').val('');
             $('#file_item').val('');
             $('#title').val('');
-            $('input[name="main_scat"]').val('');
+            $('input[name="main_scat"]:checked').val('');
             $('#tags').val('');
             $('.profile-pic').attr('src', '<?= get_theme_file_uri()."/dist/images/cover-image.png"; ?>');
             $('.name-files').html('Main file');

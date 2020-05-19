@@ -141,6 +141,7 @@
       placeholder: "selected tag...",
     });
 
+    
     $('#submit').on('click',function(e){
       e.preventDefault();
       var thumbnail   = $('input[name="thumbnail"]').val();
@@ -148,7 +149,9 @@
       var title       = $('input[name="title"]').val();
       var tags        = $('#tags').val();
       var main_scat   = $('input[name="main_scat"]:checked').val();
-      
+          
+
+
       if(thumbnail == '' || file_url == '' || title == '' || tags == '' ) {
         $("#errors").show();
       } else {
@@ -167,27 +170,7 @@
             $('#add-loader').show();
           },
           success: function(results){
-            $('.register-message').html('<span class="user-created alert alert-success">Thank you, we will contact with you as soon as possible</span>').show();
-            $('#add-loader').hide();
-            $("#errors").hide();
-            $('#thumbnails').val('');
-            $('#file_item').val('');
-            $('#title').val('');
-            $('input[name="main_scat"]:checked').val('');
-            $('#tags').val('');
-            $('.profile-pic').attr('src', '<?= get_theme_file_uri()."/dist/images/cover-image.png"; ?>');
-            $('.name-files').html('Main file');
-            $('select').select2({
-                theme: 'bootstrap4',
-                placeholder: "Category",
-            });
-            $('#tags').select2({
-              theme: 'bootstrap4',
-              tags: true,
-              tokenSeparators: [',', ' '],
-              placeholder: "selected tag...",
-            });
-            $('#results-items .new-item').append(results);
+            location.reload(true);
           },
           error: function(results) {
             $('.register-message').html('plz try again later').show();

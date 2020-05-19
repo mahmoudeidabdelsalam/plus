@@ -13,23 +13,18 @@
 
 <style>
   .create-account {
-    background: linear-gradient(90deg, #5433FF 0%, #20BDFF 100%);
-    box-shadow: 0px 2px 15px rgba(30, 109, 251, 0.25);
-    border-radius: 8px 8px 8px 0;
-    padding: 10px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
+    border: 2px solid #282F39;
+    border-radius: 4px;
+    font-weight: 500;
     font-size: 16px;
-    line-height: 19px;
+    line-height: 21px;
     text-align: center;
-    letter-spacing: 0.114083px;
-    text-transform: capitalize;
-    color: #FFFFFF;
+    letter-spacing: 0.04px;
+    color: #282F39;
+    padding: 10px 20px;
   }
   .create-account:hover {
-    color: #FFFFFF;
-    background: linear-gradient(90deg, #20BDFF 0%, #5433FF 100%);
+    color: #282F39;
     border-radius: 0 8px 8px 8px;
   }
 

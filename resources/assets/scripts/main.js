@@ -11,6 +11,7 @@ import 'slideout/dist/slideout';
 import 'isotope-layout/dist/isotope.pkgd.min';
 import 'imagesloaded/imagesloaded.pkgd.min';
 import 'aos/dist/aos';
+import 'magnific-popup/dist/jquery.magnific-popup';
 
 // Import everything from autoload
 import './autoload/**/*'

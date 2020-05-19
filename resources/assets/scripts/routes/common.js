@@ -6,6 +6,11 @@ export default {
   init() {
     // JavaScript to be fired on all pages
 
+    $('.popup-youtube').magnificPopup({
+      type: 'iframe',
+      mainClass: 'mfp-fade',
+      preloader: true,
+    });
 
     AOS.init();
 

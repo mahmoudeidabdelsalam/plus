@@ -15,21 +15,22 @@ function graphics_add_front_end() {
       $main_scat = $_POST["main_scat"];
 
       $tags = $_POST['tags'];
-      $tags = array_map( 'intval', $tags );
-      $tags = array_unique( $tags );
+      // $tags = array_map( 'intval', $tags );
+      // $tags = array_unique( $tags );
 
       $graphics = wp_insert_post(array (
         'post_type' => 'graphics',
         'post_title' => $title,
         'post_status' => 'publish',
         'post_author' => $current_user->ID,
-        'tax_input' => array( 'graphics-category' => array($main_scat))
+        'tax_input' => array( 'graphics-category' => array($main_scat), 'graphics-tag' => $tags)
+        // 'tax_input' => array( 'graphics-category' => array($main_scat))
       ));
 
 
       if ($graphics) {
         update_field( 'field_5d43723a031b2', $file_url, $graphics );
-        wp_set_object_terms($graphics, $tags, 'graphics-tag');
+        // wp_set_object_terms($graphics, $tags, 'graphics-tag');
         set_post_thumbnail( $graphics, $thumbnail );
       }
 

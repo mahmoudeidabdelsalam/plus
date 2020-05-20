@@ -74,6 +74,7 @@
                 'multiple'   => true,
                 'walker'     => new Willy_Walker_CategoryDropdown(),
                 'hide_empty' => false,
+                'value_field'       => 'name',
               ));
             ?>
           </div>

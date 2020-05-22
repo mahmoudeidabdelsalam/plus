@@ -27,7 +27,7 @@
           </div>
         </div>
 
-        <div class="col-md-7 col-12 hv-100">
+        <div class="col-md-7 col-12 hv-100 sign-up">
           <a class="navbar-brand" href="https://premast.com/" title="Premast">
             <img class="img-fluid" src=" https://premast.com/app/uploads/2019/04/1-copy-4.png " alt="Premast" title="Premast">
             <span class="sr-only"> Premast </span>

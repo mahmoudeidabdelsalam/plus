@@ -84,3 +84,44 @@ function ajaxtestdel() {
 }
 
 
+
+// edit forntend Ajax
+add_action('wp_ajax_graphics_edit_front_end', 'graphics_edit_front_end', 0);
+add_action('wp_ajax_nopriv_graphics_edit_front_end', 'graphics_edit_front_end');
+function graphics_edit_front_end() {
+
+      global $current_user;
+      wp_get_current_user();
+      $user = wp_get_current_user();
+
+      $thumbnail = $_POST["thumbnail"];
+      $file_url = $_POST["file_url"];
+      $title = $_POST['title'];
+      $main_scat = $_POST["main_scat"];
+      $tags = $_POST['tags'];
+      $post_id = $_POST['post_id'];
+
+      $graphics = wp_update_post(array (
+        'post_type' => 'graphics',
+        'ID'           => $post_id,
+        'post_title' => $title,
+        'post_status' => 'publish',
+        'post_author' => $current_user->ID,
+        'tax_input' => array( 'graphics-category' => array($main_scat), 'graphics-tag' => $tags)
+      ));
+
+
+      if ($graphics) {
+        update_field( 'field_5d43723a031b2', $file_url, $graphics );
+        set_post_thumbnail( $graphics, $thumbnail );
+      }
+
+
+	  	if (!is_wp_error($graphics)) {
+        echo "success edit";
+	  	} else {
+	    	echo "error edit";
+      }
+
+	die;
+}

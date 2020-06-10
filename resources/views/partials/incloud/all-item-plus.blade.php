@@ -66,10 +66,14 @@
             }
 
             if ($tags) {
-              $tag_id = $tags[0]->term_id;
+              $tag_id = [];
+              foreach ($tags as $tag) {
+                $tag_id[] = $tag->term_id;
+              }
             } else {
               $tag_id = 0;
             }
+
             @endphp
             <div class="col-md-3 col-sm-4 co-xs-12 col-12 plus-all-item" id="{{ the_ID() }}">
               <div class="card">
@@ -176,11 +180,7 @@
                   var file_url    = $('#exampleModal<?= the_ID(); ?>  input[name="file_url"]').val();
                   var title       = $('#exampleModal<?= the_ID(); ?>  input[name="title"]').val();
                   var tags        = $('#exampleModal<?= the_ID(); ?>  #tags<?= the_ID(); ?>').val();
-                  var main_scat   = $('#exampleModal<?= the_ID(); ?>  input[name="main_scat<?= the_ID(); ?>"]:checked').val();
-
-
-                  console.log(main_scat);
-                  
+                  var main_scat   = $('#exampleModal<?= the_ID(); ?>  [name="main_scat<?= the_ID(); ?>"]').val();
 
                   $.ajax({
                     type:"POST",
@@ -199,10 +199,12 @@
                     },
                     success: function(results){
                       $('.register-message').html(results).show();
+                      $('.register-message').css('color', 'green');
                       $('.loading').hide();
                     },
                     error: function(results) {
                       $('.register-message').html('plz try again later').show();
+                      $('.register-message').css('color', 'red');
                       $('.loading').hide();
                     }
                   });
@@ -353,6 +355,17 @@
     outline: none !important;
     box-shadow: none !important;
   }
+  span.register-message {
+    position: absolute;
+    top: 10px;
+  }
+  span.loading {
+    position: absolute;
+    top: -54px;
+    right: 8px;
+    color: #2f7fed;
+    font-size: 45px;
+  }
 </style>
 
 <script>
@@ -362,7 +375,12 @@
       $('select').select2({
         theme: 'bootstrap4',
       });
-
+      $('select[id*="tags"]').select2({
+        theme: 'bootstrap4',
+        tags: true,
+        tokenSeparators: [',', ' '],
+        placeholder: "selected tag...",
+      });
     })
 
     $('.item-deleted').on('click', function(e){

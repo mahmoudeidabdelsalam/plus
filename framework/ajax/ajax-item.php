@@ -101,13 +101,15 @@ function graphics_edit_front_end() {
       $tags = $_POST['tags'];
       $post_id = $_POST['post_id'];
 
+      // dd($main_scat);
+
       $graphics = wp_update_post(array (
         'post_type' => 'graphics',
         'ID'           => $post_id,
         'post_title' => $title,
         'post_status' => 'publish',
         'post_author' => $current_user->ID,
-        'tax_input' => array( 'graphics-category' => array($main_scat), 'graphics-tag' => $tags)
+        'tax_input' => array('graphics-category' => $main_scat, 'graphics-tag' => $tags)
       ));
 
 

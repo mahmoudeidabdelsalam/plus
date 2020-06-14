@@ -18,6 +18,13 @@ function all_graphics($data){
 
   if($searchText != false) {
     $args['s'] = $searchText;
+    $args['tax_query'] = array(
+      array(
+        'taxonomy' => 'graphics-tag',
+        'field'    => "slug",
+        'terms'    => array($searchText),
+      ),
+    );
   }
 
   if ( $category_id != false):

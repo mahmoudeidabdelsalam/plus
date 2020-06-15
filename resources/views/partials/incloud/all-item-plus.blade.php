@@ -140,7 +140,7 @@
                                 ));
                               ?>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 multiple-select">
                               <?php 
                               // dd($tag_id);
                                 wp_dropdown_categories( array(

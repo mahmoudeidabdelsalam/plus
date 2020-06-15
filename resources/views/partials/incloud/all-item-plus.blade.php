@@ -68,7 +68,7 @@
             if ($tags) {
               $tag_id = [];
               foreach ($tags as $tag) {
-                $tag_id[] = $tag->term_id;
+                $tag_id[] = $tag->name;
               }
             } else {
               $tag_id = 0;
@@ -142,6 +142,7 @@
                             </div>
                             <div class="col-12">
                               <?php 
+                              // dd($tag_id);
                                 wp_dropdown_categories( array(
                                   'taxonomy'     => 'graphics-tag',
                                   'name'         => 'tags'.get_the_ID().'', 

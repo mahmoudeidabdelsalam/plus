@@ -81,7 +81,25 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-			),
+      ),
+      
+      array(
+        'key' => 'field_5ec2f3d411241263213123158013',
+        'label' => 'sign up link',
+        'name' => 'sign_up_link',
+        'type' => 'url',
+        'instructions' => '',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'default_value' => '',
+        'placeholder' => '',
+      ),
+
 			array (
 				'default_value' => '',
 				'new_lines' => '',

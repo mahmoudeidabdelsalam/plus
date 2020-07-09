@@ -6,7 +6,7 @@
         <span class="sr-only"> {{ get_bloginfo('name') }} </span>
       </a>
     </h1>
-    <a href="#" class="create-account">Create account</a>
+    <a href="<?= the_field('sign_up_link', 'option'); ?>" class="create-account">Create account</a>
   </div>
 </nav>
 

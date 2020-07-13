@@ -17,12 +17,12 @@ function all_graphics($data){
   );
 
   if($searchText != false) {
-    $args['s'] = $searchText;
+    $args['s'] = $searchText; 
     $args['tax_query'] = array(
       array(
         'taxonomy' => 'graphics-tag',
         'field'    => "slug",
-        'terms'    => array($searchText),
+        'terms'    => $searchText,
       ),
     );
   }
@@ -37,10 +37,47 @@ function all_graphics($data){
     );
   endif;
 
+  
+  if (get_posts($args)) {
+    $posts = new WP_Query( $args );
+  } else {
+  $args = array(
+    'post_type'        => 'graphics',
+    'posts_per_page'   => $per_page,
+    'paged'            => $page ,
+    'post_status'      => 'publish',
+  );
+
+  if($searchText != false) {    
+    $args['tax_query'] = array(
+      array(
+        'taxonomy' => 'graphics-tag',
+        'field'    => "slug",
+        'terms'    => $searchText,
+      ),
+    );
+  }
+
+  if ( $category_id != false):
+    $args['tax_query'] = array(
+      array(
+        'taxonomy' => 'graphics-category',
+        'field'    => "term_id",
+        'terms'    => $category_id,
+      ),
+    );
+  endif;
 
   $posts = new WP_Query( $args );
+  }
 
   
+
+ 
+
+
+
+
   if ( $posts->have_posts() ) {
     foreach( $posts->posts as &$post ):
       $terms =  wp_get_post_terms($post->ID , 'graphics-category');

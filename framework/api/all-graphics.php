@@ -41,40 +41,32 @@ function all_graphics($data){
   if (get_posts($args)) {
     $posts = new WP_Query( $args );
   } else {
-  $args = array(
-    'post_type'        => 'graphics',
-    'posts_per_page'   => $per_page,
-    'paged'            => $page ,
-    'post_status'      => 'publish',
-  );
 
-  if($searchText != false) {    
-    $args['tax_query'] = array(
-      array(
-        'taxonomy' => 'graphics-tag',
-        'field'    => "slug",
-        'terms'    => $searchText,
-      ),
+    $args_tag = array(
+      'post_type'        => 'graphics',
+      'posts_per_page'   => $per_page,
+      'paged'            => $page ,
+      'post_status'      => 'publish',
     );
+
+    if($searchText != false) {    
+      $args_tag['tax_query'] = array(
+        array(
+          'taxonomy' => 'graphics-tag',
+          'field'    => "slug",
+          'terms'    => $searchText,
+        ),
+        array(
+          'taxonomy' => 'graphics-category',
+          'field'    => "term_id",
+          'terms'    => $category_id,
+        ),
+      );
+    }
+
+    $posts = new WP_Query( $args_tag );
+
   }
-
-  if ( $category_id != false):
-    $args['tax_query'] = array(
-      array(
-        'taxonomy' => 'graphics-category',
-        'field'    => "term_id",
-        'terms'    => $category_id,
-      ),
-    );
-  endif;
-
-  $posts = new WP_Query( $args );
-  }
-
-  
-
- 
-
 
 
 

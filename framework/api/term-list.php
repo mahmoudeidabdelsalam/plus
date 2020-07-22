@@ -1,45 +1,29 @@
-<?php
-function get_graphics_category($data){
+<?php 
+function get_graphics_subcategory($data){
   
   $data=$data->get_params('GET');
   extract($data);
 
-  $term_id = !empty($term_id) ? $term_id : 0;
+  $parent_id = !empty($parent_id) ? $parent_id : 0;
+
+  $taxonomy = array('graphics-category');
+
+  $args = array('parent' => $parent_id); 
+
+  $taxonomies = get_terms($taxonomy, $args);
 
 
-  if($term_id) {
-    $categories = get_terms(
-      [
-        'taxonomy' => 'graphics-category',
-        'hide_empty' => false,
-        'parent' => 0,
-        'orderby'  => 'include',
-        'include' => $term_id
-      ]
-    );
-  } else {
-    $categories = get_terms(
-      [
-        'taxonomy' => 'graphics-category',
-        'hide_empty' => false,
-        'parent' => 0,
-        'orderby'  => 'include',
-      ]
-    );
-  }
-
-
-  if ( !empty($categories) ) {
+  if ( !empty($taxonomies) ) {
 
     $categories_parent = [];
 
-    foreach ($categories as $category) {
+    foreach ($taxonomies as $category) {
         $icon = get_field('icon_term', 'graphics-category_' . $category->term_id);
         $column_number = get_field('column_number', 'graphics-category_' . $category->term_id);
         $pre_page = get_field('pre_page', 'graphics-category_' . $category->term_id);
 
         $sources = get_field('select_sources_items', 'graphics-category_' . $category->term_id);
-
+        
         if ($icon) {
           $icon = $icon;
         }else {
@@ -48,6 +32,7 @@ function get_graphics_category($data){
 
         $categories_parent[] = [
           'id' => $category->term_id,
+          'parent_id' => $parent_id,
           'name' => html_entity_decode( $category->name ),
           'icon' => $icon,
           'column' => ($column_number)? $column_number:"2",
@@ -69,19 +54,19 @@ function get_graphics_category($data){
     $result = [
       'success' => 'false',
       'code' => 404,
-      'message' => 'no terms found',
+      'message' => 'terms empty',
     ];
     return $result;
   }
+
 }
 
-
 add_action('rest_api_init' , function(){
-  register_rest_route('wp/api/' ,'graphics/GetCategory/',array(
+  register_rest_route('wp/api/' ,'graphics/GetSubCategory/',array(
     'methods' => 'GET',
-    'callback' => 'get_graphics_category',
+    'callback' => 'get_graphics_subcategory',
     'args' => array(
-      'term_id' => array(
+      'parent_id' => array(
         'validate_callback' => function($param,$request,$key){
           return is_numeric($param);
         }

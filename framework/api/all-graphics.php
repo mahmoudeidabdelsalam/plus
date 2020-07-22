@@ -4,67 +4,80 @@ function all_graphics($data){
   $data=$data->get_params('GET');
   extract($data);
 
-  $per_page = !empty($per_page) ? $per_page : 10;
-  $page = !empty($page) ? $page : true;
-  $searchText = !empty($searchText) ? $searchText : false;
-  $category_id = !empty($category) ? $category : 0;
+  $per_page     = !empty($per_page) ? $per_page : 10;
+  $page         = !empty($page) ? $page : true;
+  $searchText   = !empty($searchText) ? $searchText : false;
+  $category_id  = !empty($category) ? $category : 0;
+  $post_id      = !empty($post_id) ? $post_id : false;
   
-  $args = array(
-    'post_type'        => 'graphics',
-    'posts_per_page'   => $per_page,
-    'paged'            => $page ,
-    'post_status'      => 'publish',
-  );
-
-  if($searchText != false) {
-    $args['s'] = $searchText; 
-    $args['tax_query'] = array(
-      array(
-        'taxonomy' => 'graphics-tag',
-        'field'    => "slug",
-        'terms'    => $searchText,
-      ),
+  if($post_id) {
+    
+    $args = array(
+      'post_type' => 'graphics',
+      'p'         => $post_id
     );
-  }
-
-  if ( $category_id != false):
-    $args['tax_query'] = array(
-      array(
-        'taxonomy' => 'graphics-category',
-        'field'    => "term_id",
-        'terms'    => $category_id,
-      ),
-    );
-  endif;
-
-  
-  if (get_posts($args)) {
     $posts = new WP_Query( $args );
+
   } else {
 
-    $args_tag = array(
+    $args = array(
       'post_type'        => 'graphics',
       'posts_per_page'   => $per_page,
       'paged'            => $page ,
       'post_status'      => 'publish',
     );
 
-    if($searchText != false) {    
-      $args_tag['tax_query'] = array(
+    if($searchText != false) {
+      $args['s'] = $searchText; 
+      $args['tax_query'] = array(
         array(
           'taxonomy' => 'graphics-tag',
           'field'    => "slug",
           'terms'    => $searchText,
         ),
+      );
+    }
+
+    if ( $category_id != false):
+      $args['tax_query'] = array(
         array(
           'taxonomy' => 'graphics-category',
           'field'    => "term_id",
           'terms'    => $category_id,
         ),
       );
-    }
+    endif;
 
-    $posts = new WP_Query( $args_tag );
+    
+    if (get_posts($args)) {
+      $posts = new WP_Query( $args );
+    } else {
+
+      $args_tag = array(
+        'post_type'        => 'graphics',
+        'posts_per_page'   => $per_page,
+        'paged'            => $page ,
+        'post_status'      => 'publish',
+      );
+
+      if($searchText != false) {    
+        $args_tag['tax_query'] = array(
+          array(
+            'taxonomy' => 'graphics-tag',
+            'field'    => "slug",
+            'terms'    => $searchText,
+          ),
+          array(
+            'taxonomy' => 'graphics-category',
+            'field'    => "term_id",
+            'terms'    => $category_id,
+          ),
+        );
+      }
+
+      $posts = new WP_Query( $args_tag );
+
+    }
 
   }
 
@@ -80,11 +93,15 @@ function all_graphics($data){
       $file = get_field('file_graphics' , $post->ID);
       $ext = pathinfo($file, PATHINFO_EXTENSION);
 
+
+      $collocations = get_field('collocation_icons' , $post->ID);
+
       $post->Type = $ext;
       $post->Id           = $post->ID;
       $post->Name         = htmlspecialchars_decode( get_the_title($post->ID) );
       $post->Content = get_field('file_graphics' , $post->ID);
       $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
+      $post->Collocations = $collocations;
       unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);
       formatPost($post);
     endforeach;
@@ -114,22 +131,27 @@ add_action('rest_api_init' , function(){
     'callback' => 'all_graphics',
     'args' => array(
       'per_page' => array(
-        'validate_callback' => function($param,$request,$key){
+        'validate_callback' => function($param, $request, $key){
           return true;
         }
       ),
       'page' => array(
-        'validate_callback' => function($param,$request,$key){
+        'validate_callback' => function($param, $request, $key){
           return is_numeric($param);
         }
       ),
       'category' => array(
-        'validate_callback' => function($param,$request,$key){
+        'validate_callback' => function($param, $request, $key){
           return is_numeric($param);
         }
       ),
       'searchText'  => array(
-        'validate_callback' => function($param,$request,$key){
+        'validate_callback' => function($param, $request, $key){
+          return true;
+        }
+      ),
+      'post_id'  => array(
+        'validate_callback' => function($param, $request, $key){
           return true;
         }
       ),

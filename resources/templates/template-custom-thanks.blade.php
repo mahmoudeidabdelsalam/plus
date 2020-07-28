@@ -1,5 +1,5 @@
 {{--
-  Template Name: Template thanks
+  Template Name: Template thanks custom
 --}}
 
 

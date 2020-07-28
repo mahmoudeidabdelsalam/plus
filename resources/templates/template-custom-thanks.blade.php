@@ -12,8 +12,7 @@
         <div class="col-md-12">
           <div class="title">
             <span><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-            <h2>Your account has been registered! </h2>
-            <h5>Thanks for using premast plus. <br>Now you can access our plugin anytime</br></h5>
+            @include('partials.content-page')
           </div>
         </div>
       </div>

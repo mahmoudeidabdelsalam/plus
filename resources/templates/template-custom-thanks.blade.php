@@ -11,7 +11,6 @@
       <div class="row mt-5">
         <div class="col-md-12">
           <div class="title">
-            <span><i class="fa fa-check-circle" aria-hidden="true"></i></span>
             @include('partials.content-page')
           </div>
         </div>

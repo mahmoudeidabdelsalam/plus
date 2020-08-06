@@ -62,6 +62,7 @@ function Get_ids_posts_search($searchText) {
     'post_type'        => 'graphics',
     'post_status'      => 'publish',
     's' =>  $searchText,
+    'posts_per_page'   => -1,
   );
 
   $posts = get_posts($args);
@@ -78,6 +79,7 @@ function Get_ids_posts_tag($searchText) {
   $args = array(
     'post_type'        => 'graphics',
     'post_status'      => 'publish',
+    'posts_per_page'   => -1,
   );
 
   $tags = get_terms('graphics-tag', array('name__like' => $searchText));

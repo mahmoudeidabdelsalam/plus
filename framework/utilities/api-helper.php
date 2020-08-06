@@ -56,3 +56,48 @@
     // And finally assign featured image to post
     return $attach_id;
 }
+
+function Get_ids_posts_search($searchText) {
+  $args = array(
+    'post_type'        => 'graphics',
+    'post_status'      => 'publish',
+    's' =>  $searchText,
+  );
+
+  $posts = get_posts($args);
+
+  $ids = [];
+  foreach ($posts as $post) {
+    $ids[] = $post->ID;
+  }
+
+  return $ids;
+}
+
+function Get_ids_posts_tag($searchText) {
+  $args = array(
+    'post_type'        => 'graphics',
+    'post_status'      => 'publish',
+  );
+
+  $tags = get_terms('graphics-tag', array('name__like' => $searchText));
+
+  foreach ($tags as $tag) {
+    $args['tax_query'] = array(
+      array(
+        'taxonomy' => 'graphics-tag',
+        'field'    => "term_id",
+        'terms'    => $tag->term_id,
+      ),
+    );
+  }
+
+  $posts = get_posts($args);
+
+  $ids = [];
+  foreach ($posts as $post) {
+    $ids[] = $post->ID;
+  }
+  
+  return $ids;
+}

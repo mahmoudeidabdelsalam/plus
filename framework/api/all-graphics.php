@@ -18,25 +18,21 @@ function all_graphics($data){
     );
     $posts = new WP_Query( $args );
 
-  } else {
+
+  } elseif($searchText != false) {
+      
+    $ids_search = Get_ids_posts_search($searchText);
+    $ids_tags   = Get_ids_posts_tag($searchText);
+
+    $results = array_merge($ids_search, $ids_tags);
 
     $args = array(
       'post_type'        => 'graphics',
+      'post_status'      => 'publish',
+      'post__in'         => $results,
       'posts_per_page'   => $per_page,
       'paged'            => $page ,
-      'post_status'      => 'publish',
     );
-
-    if($searchText != false) {
-      $args['s'] = $searchText; 
-      $args['tax_query'] = array(
-        array(
-          'taxonomy' => 'graphics-tag',
-          'field'    => "slug",
-          'terms'    => $searchText,
-        ),
-      );
-    }
 
     if ( $category_id != false):
       $args['tax_query'] = array(
@@ -48,36 +44,31 @@ function all_graphics($data){
       );
     endif;
 
+    $posts = new WP_Query( $args );
+
+  } else {
+
+    $args = array(
+      'post_type'        => 'graphics',
+      'posts_per_page'   => $per_page,
+      'paged'            => $page ,
+      'post_status'      => 'publish',
+    );
+
     
-    if (get_posts($args)) {
-      $posts = new WP_Query( $args );
-    } else {
-
-      $args_tag = array(
-        'post_type'        => 'graphics',
-        'posts_per_page'   => $per_page,
-        'paged'            => $page ,
-        'post_status'      => 'publish',
+    if ( $category_id != false):
+      $args['tax_query'] = array(
+        array(
+          'taxonomy' => 'graphics-category',
+          'field'    => "term_id",
+          'terms'    => $category_id,
+        ),
       );
+    endif;
 
-      if($searchText != false) {    
-        $args_tag['tax_query'] = array(
-          array(
-            'taxonomy' => 'graphics-tag',
-            'field'    => "slug",
-            'terms'    => $searchText,
-          ),
-          array(
-            'taxonomy' => 'graphics-category',
-            'field'    => "term_id",
-            'terms'    => $category_id,
-          ),
-        );
-      }
-
-      $posts = new WP_Query( $args_tag );
-
-    }
+    
+  
+    $posts = new WP_Query( $args );
 
   }
 

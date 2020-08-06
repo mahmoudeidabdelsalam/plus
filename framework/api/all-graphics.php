@@ -26,6 +26,8 @@ function all_graphics($data){
 
     $results = array_merge($ids_search, $ids_tags);
 
+    var_dump($results);
+
     $args = array(
       'post_type'        => 'graphics',
       'post_status'      => 'publish',

@@ -31,7 +31,6 @@ function all_graphics($data){
       'post_status'      => 'publish',
       'post__in'         => $results,
       'posts_per_page'   => $per_page,
-      'paged'            => $page ,
     );
 
     if ( $category_id != false):

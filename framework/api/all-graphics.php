@@ -30,7 +30,7 @@ function all_graphics($data){
       'post_type'        => 'graphics',
       'post_status'      => 'publish',
       'post__in'         => $results,
-      'posts_per_page'   => $per_page,
+      'posts_per_page'   => -1,
     );
 
     if ( $category_id != false):

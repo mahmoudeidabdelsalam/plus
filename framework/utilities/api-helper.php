@@ -108,3 +108,53 @@ function Get_ids_posts_tag($searchText) {
   }
 
 }
+
+
+
+function Get_icons_search($searchText, $term_id) {
+
+  $args = array(
+    'post_type'        => 'graphics',
+    'post_status'      => 'publish',
+    'posts_per_page'   => -1,
+  );
+
+  $args['tax_query'] = array(
+    array(
+      'taxonomy' => 'graphics-category',
+      'field'    => "term_id",
+      'terms'    => $term_id,
+    ),
+  );
+
+  $posts = new WP_Query( $args );
+
+  
+
+  $icons = [];
+
+  if ( $posts->have_posts() ) {
+    foreach( $posts->posts as $post ):
+
+      $collocations = get_field('collocation_icons' , $post->ID);
+
+      if($collocations) {
+        foreach ($collocations as $key => $value) {
+          if($searchText )
+          if (strpos($value['file_icon']['title'], $searchText ) !== false) {
+            $icons[] = $value['file_icon']['url'];
+          }
+        }
+      }
+    endforeach;
+  }
+
+  $arrayName = [];
+
+  foreach ($icons as $key => $value) {
+    $arrayName[] = array('links' => $value, );
+  }
+
+  
+  return $arrayName;
+}

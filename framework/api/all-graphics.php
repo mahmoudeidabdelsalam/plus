@@ -21,24 +21,8 @@ function all_graphics($data){
 
   } elseif($searchText != false) {
       
-    if($category_id == 25) {
-        $args = array(
-          'post_type'        => 'graphics',
-          'post_status'      => 'publish',
-          'posts_per_page'   => -1,
-        );
-        $args['tax_query'] = array(
-          array(
-            'taxonomy' => 'graphics-category',
-            'field'    => "term_id",
-            'terms'    => $category_id,
-          ),
-        );
+    if($category_id != 25)  {
 
-        $posts = new WP_Query( $args );
-
-        
-    } else {
       $ids_search = Get_ids_posts_search($searchText);
       $ids_tags   = Get_ids_posts_tag($searchText);
 
@@ -101,78 +85,77 @@ function all_graphics($data){
   }
 
 
+  if($category_id == 25 && $searchText) {
+    $results = Get_icons_search($searchText, $category_id);
+    if($results) {
+      $result = [
+        "success" => true,
+        "code" => 200,
+        "message" => 'Successfully retrieved',
+        "data" => $results,
+      ];  
+    } else {
+      $result = [
+        "success" => true,
+        "code" => 200,
+        "message" => 'Successfully retrieved',
+        'message' => 'Graphics Not Found',
+      ];  
+    }
+  } else {
+    if ( $posts->have_posts() ) {
+      foreach( $posts->posts as &$post ):
 
-  if ( $posts->have_posts() ) {
-    foreach( $posts->posts as &$post ):
+          $terms =  wp_get_post_terms($post->ID , 'graphics-category');
+          if(!empty($terms)){
+            $post->Category= $terms[0]->name;
+          }
+          
+          $file = get_field('file_graphics' , $post->ID);
+          $ext = pathinfo($file, PATHINFO_EXTENSION);
 
-      if($category_id == 25 && $searchText) {
-        $collocations = get_field('collocation_icons' , $post->ID);
 
-        $icons = [];
-        $titles = [];
-        if($collocations) {
-          foreach ($collocations as $key => $value) {
-            if($searchText )
-            if (strpos($value['file_icon']['title'], $searchText ) !== false) {
-              $icons[] = $value['file_icon']['url'];
-              $titles[] = $value['file_icon']['title'];
+          $collocations = get_field('collocation_icons' , $post->ID);
+
+          $post_tags = wp_get_post_terms($post->ID, 'graphics-tag');;
+          $tags = [];
+          if ( $post_tags ) {
+            foreach( $post_tags as $tag ) {
+              $tags[] =  $tag->name; 
             }
           }
-        }
 
-        if($icons) {
-          $post->Name = $titles;
-          $post->Collocations = $icons;
-        } 
+          $post->Type = $ext;
+          $post->Id           = $post->ID;
+          $post->Name         = htmlspecialchars_decode( get_the_title($post->ID) );
+          $post->Content = get_field('file_graphics' , $post->ID);
+          $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
+          $post->Collocations = $collocations;
+          $post->Tags = $tags;
+
+
+        unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);
+        formatPost($post);
+      endforeach;
         
-      } else {
-        $terms =  wp_get_post_terms($post->ID , 'graphics-category');
-        if(!empty($terms)){
-          $post->Category= $terms[0]->name;
-        }
-        
-        $file = get_field('file_graphics' , $post->ID);
-        $ext = pathinfo($file, PATHINFO_EXTENSION);
 
-
-        $collocations = get_field('collocation_icons' , $post->ID);
-
-        $post_tags = wp_get_post_terms($post->ID, 'graphics-tag');;
-        $tags = [];
-        if ( $post_tags ) {
-          foreach( $post_tags as $tag ) {
-            $tags[] =  $tag->name; 
-          }
-        }
-
-        $post->Type = $ext;
-        $post->Id           = $post->ID;
-        $post->Name         = htmlspecialchars_decode( get_the_title($post->ID) );
-        $post->Content = get_field('file_graphics' , $post->ID);
-        $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
-        $post->Collocations = $collocations;
-        $post->Tags = $tags;
-      }
-
-      unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);
-      formatPost($post);
-    endforeach;
-      
-
-    $result = [
-      "success" => true,
-      "code" => 200,
-      "message" => 'Successfully retrieved',
-      "data" => $posts->posts,
-    ];  
-  } else {
-    $result = [
-      'success' => 'false',
-      'code' => 404,
-      'message' => 'Graphics Not Found',
-    ];
+      $result = [
+        "success" => true,
+        "code" => 200,
+        "message" => 'Successfully retrieved',
+        "data" => $posts->posts,
+      ];  
+    } else {
+      $result = [
+        'success' => 'false',
+        'code' => 404,
+        'message' => 'Graphics Not Found',
+      ];
+    }
   }
-  
+
+
+
   return $result;
 
 }

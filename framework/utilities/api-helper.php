@@ -140,8 +140,11 @@ function Get_icons_search($searchText, $term_id) {
 
       if($collocations) {
         foreach ($collocations as $key => $value) {
-          if($searchText )
-          if (strpos($value['file_icon']['title'], $searchText ) !== false) {
+          $title = $value['file_icon']['title'];
+          $lower_title = strtolower($title);
+          $lower_search = strtolower($searchText);
+
+          if (strpos($lower_title, $lower_search ) !== false) {
             $icons[] = $value['file_icon']['url'];
           }
         }
@@ -152,7 +155,7 @@ function Get_icons_search($searchText, $term_id) {
   $arrayName = [];
 
   foreach ($icons as $key => $value) {
-    $arrayName[] = array('links' => $value, );
+    $arrayName[] = array('links' => $value,);
   }
 
   

@@ -21,7 +21,7 @@ function all_graphics($data){
 
   } elseif($searchText != false) {
       
-    if($category_id != 25)  {
+    if($category_id != 25 || $category_id != 23)  {
 
       $ids_search = Get_ids_posts_search($searchText);
       $ids_tags   = Get_ids_posts_tag($searchText);
@@ -85,9 +85,9 @@ function all_graphics($data){
   }
 
 
-  if($category_id == 25 && $searchText) {
+  if($category_id == 25 || $category_id == 23 && $searchText) {
     $results = Get_icons_search($searchText, $category_id);
-    if($results) {
+    if($results && $searchText != '' && $searchText != false) {
       $result = [
         "success" => true,
         "code" => 200,

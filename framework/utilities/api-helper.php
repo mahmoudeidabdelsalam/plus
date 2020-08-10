@@ -84,22 +84,27 @@ function Get_ids_posts_tag($searchText) {
 
   $tags = get_terms('graphics-tag', array('name__like' => $searchText));
 
-  foreach ($tags as $tag) {
-    $args['tax_query'] = array(
-      array(
-        'taxonomy' => 'graphics-tag',
-        'field'    => "term_id",
-        'terms'    => $tag->term_id,
-      ),
-    );
+  if($tags) {
+    foreach ($tags as $tag) {
+      $args['tax_query'] = array(
+        array(
+          'taxonomy' => 'graphics-tag',
+          'field'    => "term_id",
+          'terms'    => $tag->term_id,
+        ),
+      );
+    }
+
+    $posts = get_posts($args);
+
+    $ids = [];
+    foreach ($posts as $post) {
+      $ids[] = $post->ID;
+    }
+    
+    return $ids;
+  } else {
+    return $tags;
   }
 
-  $posts = get_posts($args);
-
-  $ids = [];
-  foreach ($posts as $post) {
-    $ids[] = $post->ID;
-  }
-  
-  return $ids;
 }

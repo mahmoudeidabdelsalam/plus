@@ -21,29 +21,58 @@ function all_graphics($data){
 
   } elseif($searchText != false) {
       
-    $ids_search = Get_ids_posts_search($searchText);
-    $ids_tags   = Get_ids_posts_tag($searchText);
+    if($category_id == 25) {
+        $args = array(
+          'post_type'        => 'graphics',
+          'post_status'      => 'publish',
+          'posts_per_page'   => -1,
+        );
+        $args['tax_query'] = array(
+          array(
+            'taxonomy' => 'graphics-category',
+            'field'    => "term_id",
+            'terms'    => $category_id,
+          ),
+        );
 
-    $results = array_merge($ids_search, $ids_tags);
+        $posts = new WP_Query( $args );
 
-    $args = array(
-      'post_type'        => 'graphics',
-      'post_status'      => 'publish',
-      'post__in'         => $results,
-      'posts_per_page'   => -1,
-    );
+        
+    } else {
+      $ids_search = Get_ids_posts_search($searchText);
+      $ids_tags   = Get_ids_posts_tag($searchText);
 
-    if ( $category_id != false):
-      $args['tax_query'] = array(
-        array(
-          'taxonomy' => 'graphics-category',
-          'field'    => "term_id",
-          'terms'    => $category_id,
-        ),
-      );
-    endif;
+      $results = array_merge($ids_search, $ids_tags);
 
-    $posts = new WP_Query( $args );
+
+      if($results) {
+        $args = array(
+          'post_type'        => 'graphics',
+          'post_status'      => 'publish',
+          'post__in'         => $results,
+          'posts_per_page'   => -1,
+        );
+
+        if ( $category_id != false):
+          $args['tax_query'] = array(
+            array(
+              'taxonomy' => 'graphics-category',
+              'field'    => "term_id",
+              'terms'    => $category_id,
+            ),
+          );
+        endif;
+      } else {
+        $args = array(
+          'post_type'       => 'graphics',
+          'post_status'     => 'publish',
+          's'               => $searchText,
+        );
+      }
+
+      $posts = new WP_Query( $args );
+    }
+
 
   } else {
 
@@ -75,23 +104,56 @@ function all_graphics($data){
 
   if ( $posts->have_posts() ) {
     foreach( $posts->posts as &$post ):
-      $terms =  wp_get_post_terms($post->ID , 'graphics-category');
-      if(!empty($terms)){
-        $post->Category= $terms[0]->name;
+
+      if($category_id == 25 && $searchText) {
+        $collocations = get_field('collocation_icons' , $post->ID);
+
+        $icons = [];
+        $titles = [];
+        if($collocations) {
+          foreach ($collocations as $key => $value) {
+            if($searchText )
+            if (strpos($value['file_icon']['title'], $searchText ) !== false) {
+              $icons[] = $value['file_icon']['url'];
+              $titles[] = $value['file_icon']['title'];
+            }
+          }
+        }
+
+        if($icons) {
+          $post->Name = $titles;
+          $post->Collocations = $icons;
+        } 
+        
+      } else {
+        $terms =  wp_get_post_terms($post->ID , 'graphics-category');
+        if(!empty($terms)){
+          $post->Category= $terms[0]->name;
+        }
+        
+        $file = get_field('file_graphics' , $post->ID);
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
+
+
+        $collocations = get_field('collocation_icons' , $post->ID);
+
+        $post_tags = wp_get_post_terms($post->ID, 'graphics-tag');;
+        $tags = [];
+        if ( $post_tags ) {
+          foreach( $post_tags as $tag ) {
+            $tags[] =  $tag->name; 
+          }
+        }
+
+        $post->Type = $ext;
+        $post->Id           = $post->ID;
+        $post->Name         = htmlspecialchars_decode( get_the_title($post->ID) );
+        $post->Content = get_field('file_graphics' , $post->ID);
+        $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
+        $post->Collocations = $collocations;
+        $post->Tags = $tags;
       }
-      
-      $file = get_field('file_graphics' , $post->ID);
-      $ext = pathinfo($file, PATHINFO_EXTENSION);
 
-
-      $collocations = get_field('collocation_icons' , $post->ID);
-
-      $post->Type = $ext;
-      $post->Id           = $post->ID;
-      $post->Name         = htmlspecialchars_decode( get_the_title($post->ID) );
-      $post->Content = get_field('file_graphics' , $post->ID);
-      $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
-      $post->Collocations = $collocations;
       unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);
       formatPost($post);
     endforeach;

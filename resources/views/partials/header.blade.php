@@ -7,7 +7,7 @@
       </a>
     </h1>
     @if ( is_user_logged_in() )
-      <a href="https://appsource.microsoft.com/en-us/product/office/WA104178141?tab=Overview" class="create-account">Install Add-in</a>
+      <a href="https://appsource.microsoft.com/en-us/product/office/WA200001396?src=office&tab=Overview" class="create-account">Install Add-in</a>
     @else 
       <a href="<?= the_field('sign_up_link', 'option'); ?>" class="create-account">Create account</a>
     @endif

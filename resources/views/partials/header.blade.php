@@ -7,27 +7,13 @@
       </a>
     </h1>
     @if ( is_user_logged_in() )
-      <a href="https://help.plus.premast.com/getting-started-1/quick-start" class="create-account">Install Add-in</a>
+      <a href="https://appsource.microsoft.com/en-us/product/office/WA104178141?tab=Overview" class="create-account">Install Add-in</a>
     @else 
       <a href="<?= the_field('sign_up_link', 'option'); ?>" class="create-account">Create account</a>
     @endif
   </div>
 </nav>
 
-<script>
-  jQuery(function($) {
-
-    var settings = {};
-    var submissionUrl = "";
-if (settings.baseUri === location.host.includes('localhost') ? '/' : '/ProjectNameOnServer') {
-    submissionUrl = settings.baseUri + "/api/apiControllerName/apiControllerMethodName/";
-} else {
-    submissionUrl = settings.baseUri + "api/apiControllerName/apiControllerMethodName/";
-}
-
-    console.log(submissionUrl);
-  });
-</script>
 
 <style>
   .create-account {

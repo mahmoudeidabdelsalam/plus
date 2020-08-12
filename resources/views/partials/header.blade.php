@@ -6,10 +6,28 @@
         <span class="sr-only"> {{ get_bloginfo('name') }} </span>
       </a>
     </h1>
-    <a href="<?= the_field('sign_up_link', 'option'); ?>" class="create-account">Create account</a>
+    @if ( is_user_logged_in() )
+      <a href="https://help.plus.premast.com/getting-started-1/quick-start" class="create-account">Install Add-in</a>
+    @else 
+      <a href="<?= the_field('sign_up_link', 'option'); ?>" class="create-account">Create account</a>
+    @endif
   </div>
 </nav>
 
+<script>
+  jQuery(function($) {
+
+    var settings = {};
+    var submissionUrl = "";
+if (settings.baseUri === location.host.includes('localhost') ? '/' : '/ProjectNameOnServer') {
+    submissionUrl = settings.baseUri + "/api/apiControllerName/apiControllerMethodName/";
+} else {
+    submissionUrl = settings.baseUri + "api/apiControllerName/apiControllerMethodName/";
+}
+
+    console.log(submissionUrl);
+  });
+</script>
 
 <style>
   .create-account {

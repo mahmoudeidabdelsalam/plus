@@ -6,14 +6,21 @@ function action_posts($data){
   $data=$data->get_params('POST');
   extract($data);
 
-  $email = !empty($email) ? $email : false;
+  $email    = !empty($email) ? $email : false;
   $password = !empty($password) ? $password : false;
-  $title = !empty($title) ? $title : "test";
-  $image = !empty($image) ? $image : false;
-  $file = !empty($file) ? $file : false;
-  $term = !empty($term) ? $term : false;
-  $tag = !empty($tag) ? $tag : false;
-  $author = !empty($author) ? $author : false;
+  $title    = !empty($title) ? $title : false;
+  $image    = !empty($image) ? $image : false;
+  $file     = !empty($file) ? $file : false;
+  $term     = !empty($term) ? $term : false;
+  $child    = !empty($term_child) ? $term_child : false;
+  $tag      = !empty($tag) ? $tag : false;
+  $author   = !empty($author) ? $author : false;
+
+  $collocations = !empty($collocations) ? $collocations : false;
+
+
+  var_dump($tag);
+
 
   $args = array(
     'count_total'  => false,
@@ -42,7 +49,7 @@ function action_posts($data){
         'post_title' => $title,
         'post_status' => 'publish',
         'post_author' => $author_id->ID,
-        'tax_input' => array( 'graphics-category' => array($term), 'graphics-tag' => $tag)
+        'tax_input' => array( 'graphics-category' => array($term, $child), 'graphics-tag' => $tag)
       ));
 
 
@@ -57,6 +64,19 @@ function action_posts($data){
           $attach_id = Generate_Featured_Image($image);
           set_post_thumbnail( $post_id, $attach_id );
         }
+
+        // if($collocations) {
+        //   $field_key = "field_5f16c8095cae5";
+        //   $value = array(
+        //       array(
+        //           "file_icon_1"   => "https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png",
+        //           "file_icon_2"   => "https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png",
+        //           "file_icon_3"   => "https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png",
+        //       )
+        //   );
+        //   update_field( $field_key, $value, $post_id );
+        // }
+
       }
 
         
@@ -152,7 +172,12 @@ add_action('rest_api_init' , function(){
         'validate_callback' => function($param,$request,$key){
           return true;
         }
-      ),  
+      ),
+      'term_child' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
       'tag' => array(
         'validate_callback' => function($param,$request,$key){
           return true;
@@ -163,6 +188,11 @@ add_action('rest_api_init' , function(){
           return true;
         }
       ), 
+      'collocations' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
     )
   ));
 });

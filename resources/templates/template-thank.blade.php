@@ -51,7 +51,7 @@
         </div>
         <div class="row justify-content-center m-5">
           <div class="inst-button">
-          <a href="{{ the_field('link_app_install', 'option') }}" class="btn btn-primary" style="background-image:url({{ get_theme_file_uri().'/resources/assets/images' }}/bag.png); background-repeat: no-repeat; padding-left: 34px;  border: 5px solid transparent;box-sizing: border-box;">Instll Plugin</a>
+          <a href="{{ the_field('link_app_install', 'option') }}" class="btn btn-primary" style="background-image:url({{ get_theme_file_uri().'/resources/assets/images' }}/bag.png); background-repeat: no-repeat; padding-left: 34px;  border: 5px solid transparent;box-sizing: border-box;">Install Plugin</a>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <?php
 function all_users($data){
 
-  $data=$data->get_params('POST');
+  $data=$data->get_params('GET');
   extract($data);
 
   $email = !empty($email) ? $email : false;
@@ -21,7 +21,7 @@ function all_users($data){
 
     foreach ($users as $user) {
       $passwords[] = $user->user_pass;
-      $emails[] =  $user->user_email;
+      $emails[] =  strtolower($user->user_email);
     }
 
     $user = get_user_by( 'email', $email );
@@ -34,6 +34,10 @@ function all_users($data){
     } else {
       $admin = false;
     }
+
+
+    $email = strtolower($email);
+
 
     if (in_array($email, $emails) && wp_check_password( $password, $user->data->user_pass, $user->ID)) { 
       $login = true;
@@ -67,7 +71,7 @@ function all_users($data){
 
 add_action('rest_api_init' , function(){
   register_rest_route('wp/api/' ,'users/login',array(
-    'methods' => 'POST',
+    'methods' => 'GET',
     'callback' => 'all_users',
     'args' => array(
       'email' => array(

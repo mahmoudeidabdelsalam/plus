@@ -1,7 +1,7 @@
 <?php
 function all_users($data){
 
-  $data=$data->get_params('GET');
+  $data=$data->get_params('POST');
   extract($data);
 
   $email = !empty($email) ? $email : false;
@@ -71,7 +71,7 @@ function all_users($data){
 
 add_action('rest_api_init' , function(){
   register_rest_route('wp/api/' ,'users/login',array(
-    'methods' => 'GET',
+    'methods' => 'POST',
     'callback' => 'all_users',
     'args' => array(
       'email' => array(

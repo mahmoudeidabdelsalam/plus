@@ -6,6 +6,7 @@ function get_general_settings(){
     'version' => get_field('version_plus_app', 'option'),
     'links' => get_field('links_plus_app', 'option'),
     'scripts' => get_field('scripts_head', 'option'),
+    'advertisement' => get_field('advertisement', 'option'),
   ];
 
   $result = [

@@ -13,13 +13,10 @@ function action_posts($data){
   $file     = !empty($file) ? $file : false;
   $term     = !empty($term) ? $term : false;
   $child    = !empty($term_child) ? $term_child : false;
-  $tag      = !empty($tag) ? $tag : false;
-  $author   = !empty($author) ? $author : false;
+  $tags      = !empty($tag) ? $tag : false;
+  $author     = !empty($author) ? $author : false;
 
-  $collocations = !empty($collocations) ? $collocations : false;
-
-
-  var_dump($tag);
+  $collocations   = !empty($collocations) ? $collocations : false;
 
 
   $args = array(
@@ -43,15 +40,20 @@ function action_posts($data){
     $author_id = get_user_by( 'email', $author );
 
     if (in_array($email, $emails) && wp_check_password( $password, $user->data->user_pass, $user->ID)) { 
-      
-      $post_id = wp_insert_post(array (
+
+      $post = array(
         'post_type' => 'graphics',
         'post_title' => $title,
         'post_status' => 'publish',
         'post_author' => $author_id->ID,
-        'tax_input' => array( 'graphics-category' => array($term, $child), 'graphics-tag' => $tag)
-      ));
+        'tax_input' => array('graphics-tag' => 'name')
+      );
 
+      $post_id = wp_insert_post( $post );
+
+      wp_set_post_terms( $post_id, array(intval($term), intval($child)), 'graphics-category' );
+
+      wp_set_post_terms( $post_id, $tags, 'graphics-tag' );
 
       if ($post_id) {
         
@@ -65,21 +67,18 @@ function action_posts($data){
           set_post_thumbnail( $post_id, $attach_id );
         }
 
-        // if($collocations) {
-        //   $field_key = "field_5f16c8095cae5";
-        //   $value = array(
-        //       array(
-        //           "file_icon_1"   => "https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png",
-        //           "file_icon_2"   => "https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png",
-        //           "file_icon_3"   => "https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png",
-        //       )
-        //   );
-        //   update_field( $field_key, $value, $post_id );
-        // }
+        $arrayS = [];
+        $collocations = explode(', ', $collocations);
 
+        foreach ($collocations as $key => $value) {
+          $values = Generate_Featured_Image($value);
+          $arrayS['file_icon'] = $values;
+        }
+
+        $field_key = "field_5f16c8095cae5";
+        $value = $arrayS;
+        update_field( $field_key, $value, $post_id );
       }
-
-        
 
       $args = array(
         'post_type'   => 'graphics',
@@ -92,18 +91,22 @@ function action_posts($data){
       if (!is_wp_error($posts)) {
         $message = 'successfully Login';
       }
-      
 
       add_action('acf/save_post', 'my_acf_save_post');
       function my_acf_save_post( $posts ) {
         wp_update_post($post_id);
       }
 
-
       foreach( $posts as &$post ):
         $terms =  wp_get_post_terms($post->ID , 'graphics-category');
         if(!empty($terms)){
           $post->Category= $terms[0]->name;
+        }
+
+        $tags =  wp_get_post_terms($post->ID, 'graphics-tag');
+
+        if(!empty($tags)){
+          $post->Tags= $tags[0]->name;
         }
         
         $file = get_field('file_graphics' , $post->ID);
@@ -114,6 +117,7 @@ function action_posts($data){
         $post->Name         = htmlspecialchars_decode( get_the_title($post->ID) );
         $post->Content = get_field('file_graphics' , $post->ID);
         $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
+        $post->Link = get_the_permalink($post->ID);
         unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);
         formatPost($post);
       endforeach;
@@ -196,6 +200,18 @@ add_action('rest_api_init' , function(){
     )
   ));
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // API UPDATE
@@ -371,6 +387,13 @@ add_action('rest_api_init' , function(){
     )
   ));
 });
+
+
+
+
+
+
+
 
 
 // API DELETE

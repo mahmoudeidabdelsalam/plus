@@ -87,3 +87,88 @@ add_action('rest_api_init' , function(){
     )
   ));
 });
+
+
+
+
+
+
+
+function register_plus($data){
+
+  $data=$data->get_params('POST');
+  extract($data);
+
+  $email = !empty($email) ? $email : false;
+  $password = !empty($password) ? $password : false;
+
+  if($email && $password){
+
+    $email = strtolower($email);
+    $user = get_user_by( 'email', $email );
+
+    if($user) {
+      $message = [ 
+        "message" => "The email already exists",
+        "signup" => false
+      ];
+    } else {
+      $user_login = strtolower($email);
+      $data = array(
+        'user_email'    => $email,
+        'user_pass'     => $password,
+        'user_login'  => $user_login,
+        'role'          => 'subscriber'
+      );
+      $user = wp_insert_user($data);
+
+      if (!is_wp_error($user)){
+        $message = [ 
+          "message" => "Your account has been Registered successfully",
+          "signup" => true
+        ];
+      } else {
+        $message = [ 
+          "message" => "Occured kindly fill up the sign up form carefully",
+          "signup" => false
+        ];
+      }
+    }
+
+    $result = [
+      'success' => true,
+      'code' => 200,
+      'message' => "successfully",
+      'data' => $message,
+    ];
+    return $result;
+  } else {
+    $result = [
+      'success' => false,
+      'code' => 404,
+      'message' => 'Email and password are required',
+    ];
+    return $result;
+  }
+}
+
+
+
+add_action('rest_api_init' , function(){
+  register_rest_route('wp/api/' ,'users/register',array(
+    'methods' => 'POST',
+    'callback' => 'register_plus',
+    'args' => array(
+      'email' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
+      'password' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),      
+    )
+  ));
+});

@@ -63,7 +63,46 @@ acf_add_local_field_group(array(
 					'mime_types' => '',
 				),
 			),
-		),
+    ),
+    
+    array(
+      'key' => 'field_5f2a8523de123312231233b19',
+      'label' => 'Link author',
+      'name' => 'link_author',
+      'type' => 'url',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array(
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => '',
+      'placeholder' => '',
+    ),
+    array(
+      'key' => 'field_5f2a851e12e12e12e42d3b1a',
+      'label' => 'Name author',
+      'name' => 'text_author',
+      'type' => 'text',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array(
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => '',
+      'placeholder' => '',
+      'prepend' => '',
+      'append' => '',
+      'maxlength' => '',
+    ),
+
+
+
 	),
 	'location' => array(
 		array(

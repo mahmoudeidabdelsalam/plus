@@ -108,7 +108,9 @@ function all_graphics($data){
 
           $terms =  wp_get_post_terms($post->ID , 'graphics-category');
           if(!empty($terms)){
-            $post->Category= $terms[0]->name;
+            foreach ($terms as $term) {
+              $post->Category = $term->name;
+            }
           }
           
           $file = get_field('file_graphics' , $post->ID);
@@ -116,6 +118,9 @@ function all_graphics($data){
 
 
           $collocations = get_field('collocation_icons' , $post->ID);
+
+          $link_author = get_field('link_author' , $post->ID);
+          $text_author = get_field('text_author' , $post->ID);
 
           $post_tags = wp_get_post_terms($post->ID, 'graphics-tag');;
           $tags = [];
@@ -132,6 +137,8 @@ function all_graphics($data){
           $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
           $post->Collocations = $collocations;
           $post->Tags = $tags;
+          $post->AuthorLink = $link_author;
+          $post->AuthorName = $text_author;
 
 
         unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);

@@ -1,22 +1,37 @@
 <?php
-
-// API POST
+/**
+ * API Add New Item
+ * @param type POST 
+ * @param string $email
+ * @param string $password
+ * @param string $title
+ * @param string $image
+ * @param string $file 
+ * @param string $term
+ * @param string $child
+ * @param array  $tags -> ex. (tag 1, tgs, new)
+ * @param string $author
+ * @param string $author_link
+ * @param string $author_name
+ * @param array  $collocations -> ex. (https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png, https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png, https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png)
+ */
 function action_posts($data){
 
   $data=$data->get_params('POST');
   extract($data);
 
-  $email    = !empty($email) ? $email : false;
-  $password = !empty($password) ? $password : false;
-  $title    = !empty($title) ? $title : false;
-  $image    = !empty($image) ? $image : false;
-  $file     = !empty($file) ? $file : false;
-  $term     = !empty($term) ? $term : false;
-  $child    = !empty($term_child) ? $term_child : false;
-  $tags      = !empty($tag) ? $tag : false;
-  $author     = !empty($author) ? $author : false;
-
-  $collocations   = !empty($collocations) ? $collocations : false;
+  $email        = !empty($email) ? $email : false;
+  $password     = !empty($password) ? $password : false;
+  $title        = !empty($title) ? $title : false;
+  $image        = !empty($image) ? $image : false;
+  $file         = !empty($file) ? $file : false;
+  $term         = !empty($term) ? $term : false;
+  $child        = !empty($term_child) ? $term_child : false;
+  $tags         = !empty($tag) ? $tag : false;
+  $author       = !empty($author) ? $author : false;
+  $author_link  = !empty($author_link) ? $author_link : false;
+  $author_name  = !empty($author_name) ? $author_name : false;
+  $collocations = !empty($collocations) ? $collocations : false;
 
 
   $args = array(
@@ -45,8 +60,7 @@ function action_posts($data){
         'post_type' => 'graphics',
         'post_title' => $title,
         'post_status' => 'publish',
-        'post_author' => $author_id->ID,
-        'tax_input' => array('graphics-tag' => 'name')
+        'post_author' => $author_id->ID
       );
 
       $post_id = wp_insert_post( $post );
@@ -60,6 +74,8 @@ function action_posts($data){
         if($file) {
           $file_id = Generate_Featured_Image($file);
           update_field( 'field_5d43723a031b2', $file_id, $post_id );
+          update_field( 'field_5f2a851e12e12e12e42d3b1a', $author_name, $post_id );
+          update_field( 'field_5f2a8523de123312231233b19', $author_link, $post_id );
         }
         
         if($image) {
@@ -67,17 +83,31 @@ function action_posts($data){
           set_post_thumbnail( $post_id, $attach_id );
         }
 
-        $arrayS = [];
+
+        $files = [];
         $collocations = explode(', ', $collocations);
 
         foreach ($collocations as $key => $value) {
-          $values = Generate_Featured_Image($value);
-          $arrayS['file_icon'] = $values;
+          $thumb_id = Generate_Featured_Image($value);
+
+          $files[] = array(
+            'file_icon' => $thumb_id,
+          );
         }
 
-        $field_key = "field_5f16c8095cae5";
-        $value = $arrayS;
-        update_field( $field_key, $value, $post_id );
+        
+        $counter = 0;
+        foreach ($files as $key => $value) {
+          $counter++;
+          $file = array_values($value);
+
+          $row = array(
+            'field_5f16c8145cae6'   => $file[0],
+          );
+
+          add_row('field_5f16c8095cae5', $row, $post_id);
+        }
+                
       }
 
       $args = array(
@@ -118,6 +148,9 @@ function action_posts($data){
         $post->Content = get_field('file_graphics' , $post->ID);
         $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
         $post->Link = get_the_permalink($post->ID);
+        $post->Author = $author_name;
+        $post->AuthorLink = $author_link;
+        $post->collocations = get_field('collocation_icons' , $post->ID);
         unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);
         formatPost($post);
       endforeach;
@@ -192,6 +225,16 @@ add_action('rest_api_init' , function(){
           return true;
         }
       ), 
+      'author_link' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ), 
+      'author_name' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ), 
       'collocations' => array(
         'validate_callback' => function($param,$request,$key){
           return true;
@@ -203,32 +246,41 @@ add_action('rest_api_init' , function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-// API UPDATE
+/**
+ * API Update Items
+ * @param Type POST
+ * @param string $post_id
+ * @param string $email
+ * @param string $password
+ * @param string $title
+ * @param string $image
+ * @param string $file 
+ * @param string $term
+ * @param string $child
+ * @param array  $tags -> ex. (tag 1, tgs, new)
+ * @param string $author
+ * @param string $author_link
+ * @param string $author_name
+ * @param array  $collocations -> ex. (https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png, https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png, https://plus.premast.com/app/themes/plus/dist/images/logo-plus.png)
+ */
 function get_api_posts($data){
 
-  $data=$data->get_params('GET');
+  $data=$data->get_params('POST');
   extract($data);
 
-  $email = !empty($email) ? $email : false;
-  $password = !empty($password) ? $password : false;
-  $title = !empty($title) ? $title : "test";
-  $image = !empty($image) ? $image : false;
-  $file = !empty($file) ? $file : false;
-  $term = !empty($term) ? $term : false;
-  $tag = !empty($tag) ? $tag : false;
-  $author = !empty($author) ? $author : false;
-  $post_id = !empty($post_id) ? $post_id : false;
+  $post_id      = !empty($post_id) ? $post_id : false;
+  $email        = !empty($email) ? $email : false;
+  $password     = !empty($password) ? $password : false;
+  $title        = !empty($title) ? $title : false;
+  $image        = !empty($image) ? $image : false;
+  $file         = !empty($file) ? $file : false;
+  $term         = !empty($term) ? $term : false;
+  $child        = !empty($term_child) ? $term_child : false;
+  $tags         = !empty($tag) ? $tag : false;
+  $author       = !empty($author) ? $author : false;
+  $author_link  = !empty($author_link) ? $author_link : false;
+  $author_name  = !empty($author_name) ? $author_name : false;
+  $collocations = !empty($collocations) ? $collocations : false;
 
   $args = array(
     'count_total'  => false,
@@ -258,20 +310,54 @@ function get_api_posts($data){
         'ID'           => $post_id,
         'post_title' => $title,
         'post_status' => 'publish',
-        'post_author' => $author_id->ID,
-        'tax_input' => array('graphics-category' => $term, 'graphics-tag' => $tag)
+        'post_author' => $author_id->ID
       ));
 
 
       if ($graphics) {
+
+
+
+        wp_set_post_terms( $graphics, array(intval($term), intval($child)), 'graphics-category' );
+
+        wp_set_post_terms( $graphics, $tags, 'graphics-tag' );
+
+
         if($file) {
           $file_id = Generate_Featured_Image($file);
           update_field( 'field_5d43723a031b2', $file_id, $graphics );
+          update_field( 'field_5f2a851e12e12e12e42d3b1a', $author_name, $graphics );
+          update_field( 'field_5f2a8523de123312231233b19', $author_link, $graphics );
         }
         
         if($image) {
           $attach_id = Generate_Featured_Image($image);
           set_post_thumbnail( $graphics, $attach_id );
+        }
+
+
+        $files = [];
+        $collocations = explode(', ', $collocations);
+
+        foreach ($collocations as $key => $value) {
+          $thumb_id = Generate_Featured_Image($value);
+
+          $files[] = array(
+            'file_icon' => $thumb_id,
+          );
+        }
+
+        
+        $counter = 0;
+        foreach ($files as $key => $value) {
+          $counter++;
+          $file = array_values($value);
+
+          $row = array(
+            'field_5f16c8145cae6'   => $file[0],
+          );
+
+          add_row('field_5f16c8095cae5', $row, $graphics);
         }
       }
 
@@ -301,6 +387,12 @@ function get_api_posts($data){
         if(!empty($terms)){
           $post->Category= $terms[0]->name;
         }
+
+        $tags =  wp_get_post_terms($post->ID, 'graphics-tag');
+
+        if(!empty($tags)){
+          $post->Tags= $tags[0]->name;
+        }
         
         $file = get_field('file_graphics' , $post->ID);
         $ext = pathinfo($file, PATHINFO_EXTENSION);
@@ -310,6 +402,10 @@ function get_api_posts($data){
         $post->Name         = htmlspecialchars_decode( get_the_title($post->ID) );
         $post->Content = get_field('file_graphics' , $post->ID);
         $post->PreviewImage = get_the_post_thumbnail_url($post->ID, 'full' );
+        $post->Link = get_the_permalink($post->ID);
+        $post->Author = $author_name;
+        $post->AuthorLink = $author_link;
+        $post->collocations = get_field('collocation_icons' , $post->ID);
         unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);
         formatPost($post);
       endforeach;
@@ -336,7 +432,7 @@ function get_api_posts($data){
 
 add_action('rest_api_init' , function(){
   register_rest_route('wp/api/' ,'post/add_update',array(
-    'methods' => 'GET',
+    'methods' => 'POST',
     'callback' => 'get_api_posts',
     'args' => array(
       'email' => array(
@@ -368,7 +464,12 @@ add_action('rest_api_init' , function(){
         'validate_callback' => function($param,$request,$key){
           return true;
         }
-      ),  
+      ),
+      'term_child' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
       'tag' => array(
         'validate_callback' => function($param,$request,$key){
           return true;
@@ -379,6 +480,21 @@ add_action('rest_api_init' , function(){
           return true;
         }
       ), 
+      'author_link' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ), 
+      'author_name' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ), 
+      'collocations' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
       'post_id' => array(
         'validate_callback' => function($param,$request,$key){
           return true;
@@ -390,16 +506,16 @@ add_action('rest_api_init' , function(){
 
 
 
-
-
-
-
-
-
-// API DELETE
+/**
+ * API Delete Items
+ * @param Type POST
+ * @param string $post_id
+ * @param string $email
+ * @param string $password
+ */
 function delete_api_posts($data){
 
-  $data=$data->get_params('GET');
+  $data=$data->get_params('POST');
   extract($data);
 
   $email = !empty($email) ? $email : false;
@@ -452,7 +568,7 @@ function delete_api_posts($data){
 
 add_action('rest_api_init' , function(){
   register_rest_route('wp/api/' ,'post/add_delete',array(
-    'methods' => 'GET',
+    'methods' => 'POST',
     'callback' => 'delete_api_posts',
     'args' => array(
       'email' => array(

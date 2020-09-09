@@ -12,6 +12,7 @@ import 'isotope-layout/dist/isotope.pkgd.min';
 import 'imagesloaded/imagesloaded.pkgd.min';
 import 'aos/dist/aos';
 import 'magnific-popup/dist/jquery.magnific-popup';
+import 'clientjs/dist/client.min';
 
 // Import everything from autoload
 import './autoload/**/*'

@@ -161,3 +161,21 @@ function Get_icons_search($searchText, $term_id) {
   
   return $arrayName;
 }
+
+
+
+
+function Get_keywords() {
+
+  global $wpdb;
+  $posts = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $wpdb->posts WHERE  post_type = 'log_search' AND post_title LIKE '%s'", '%'. $wpdb->esc_like( $title ) .'%') );
+
+  $keywords = [];
+  foreach ($posts as $post) {
+    $keywords[] = $post->post_title;
+  }
+
+  
+
+  return array_unique($keywords);
+}

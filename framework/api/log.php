@@ -1,4 +1,9 @@
 <?php
+/**
+ * function api log download
+ * @param String $item_id, $item_title, $user
+ * @param Type POST
+ */
 function log_download($data){
 
   $data=$data->get_params('POST');
@@ -49,12 +54,26 @@ add_action('rest_api_init' , function(){
         'validate_callback' => function($param,$request,$key){
           return true;
         }
-      ),     
+      ),    
+      'item_title' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),    
+      'user' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),                 
     )
   ));
 });
 
-
+/**
+ * function api Get log download
+ * @param String $item_id, $per_page, $page
+ * @param Type GET
+ */
 
 function get_log_download($data){
 
@@ -241,8 +260,6 @@ function get_log_download($data){
     }
   }
 
-    
-  
   return $result;
 
 }
@@ -267,6 +284,213 @@ add_action('rest_api_init' , function(){
           return is_numeric($param);
         }
       ), 
+    )
+  ));
+});
+
+
+/**
+ * function api log Search
+ * @param String $keyword, $term_id, $user, $results
+ * @param Type POST
+ */
+function log_search($data){
+
+  $data=$data->get_params('POST');
+  extract($data);
+
+            
+  $keyword = !empty($keyword) ? $keyword : false;
+  $term_id = !empty($term_id) ? $term_id : false;
+  $user    = !empty($user) ? $user : false;
+  $results = !empty($results) ? $results : false;
+
+ 
+  $args = array(
+    'post_type' => 'log_search',
+    'post_title' => $keyword,
+    'post_status' => 'publish',
+  );
+
+  $post_id = wp_insert_post( $args );
+
+  $date = get_the_date('r', $post_id);
+  $category = get_term_by('id', $term_id, 'graphics-category');
+ 
+
+
+  if($post_id) {
+    update_field( 'field_5f58eb79c6f46', $date, $post_id );
+    update_field( 'field_5f58eb85c6f47', $category->name, $post_id );
+    update_field( 'field_5f58eb90c6f48', $results, $post_id );
+    update_field( 'field_5f58eb9cc6f49', $user, $post_id );
+  }
+
+
+  $result = [
+    'success' => true,
+    'code' => 200,
+    'message' => 'log search success',
+    'data' => $post_id,
+  ];
+  return $result;
+
+}
+
+add_action('rest_api_init' , function(){
+  register_rest_route('wp/api/' ,'log/search',array(
+    'methods' => 'POST',
+    'callback' => 'log_search',
+    'args' => array(
+      'keyword' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),    
+      'term_id' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),    
+      'user' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),                 
+    )
+  ));
+});
+
+
+/**
+ * function api Get log Search
+ * @param String $keyword, $term_id, $user, $results
+ * @param Type POST
+ */
+function get_log_search($data){
+
+  $data=$data->get_params('GET');
+  extract($data);
+
+            
+  $keyword = !empty($keyword) ? $keyword : false;
+  $page = !empty($term_id) ? $term_id : false;
+  $per_page    = !empty($user) ? $user : false;
+
+
+ 
+ 
+  $keywords = Get_keywords();
+
+
+  if($keyword) {
+    $args = array(
+      'post_type'       => 'log_search',
+      'post_status'     => 'publish',
+      's'               => $keyword,
+    );
+
+    $posts = get_posts( $args );
+
+    $title = [];
+    $date = [];
+    $category = [];
+    $result = [];
+    $user = [];
+    
+    foreach ($posts as $post) {
+      $title  = $post->post_title;
+      $date[] = get_the_date('r', $post->ID);
+      $category[] = get_field('category', $post->ID);
+      $result[] = get_field('results', $post->ID);
+      $user[] = get_field('user', $post->ID);
+    }
+
+    $results = [
+      'keyword' => $title,
+      'date' => $date,
+      'category' => $category,
+      'results' => $result,
+      'user' => $user,
+      'counter' => count($posts),
+    ];
+
+  } else {
+
+    $results = [];
+
+    foreach ($keywords as $keyword) {
+      $args = array(
+        'post_type'       => 'log_search',
+        'post_status'     => 'publish',
+        's'               => $keyword,
+      );
+
+      $posts = get_posts( $args );
+
+      $title = [];
+      $date = [];
+      $category = [];
+      $result = [];
+      $user = [];
+      
+      foreach ($posts as $post) {
+        $title  = $post->post_title;        
+        $date[] = get_the_date('r', $post->ID);
+        $category[] = get_field('category', $post->ID);
+        $result[] = get_field('results', $post->ID);
+        $user[] = get_field('user', $post->ID);
+      }
+
+      $results[] = [
+        'keyword' => $title,
+        'date' => $date,
+        'category' => $category,
+        'results' => $result,
+        'user' => $user,
+        'country' => count($posts),
+      ];
+
+    }
+    
+
+  }
+
+
+
+
+
+  $result = [
+    'success' => true,
+    'code' => 200,
+    'message' => 'log search success',
+    'data' => $results,
+  ];
+
+  return $result;
+
+}
+
+add_action('rest_api_init' , function(){
+  register_rest_route('wp/api/' ,'log/get_search',array(
+    'methods' => 'GET',
+    'callback' => 'get_log_search',
+    'args' => array(
+      'keyword' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),    
+      'page' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),    
+      'per_page' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),                 
     )
   ));
 });

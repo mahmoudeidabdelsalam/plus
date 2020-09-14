@@ -20,6 +20,18 @@ function log_download($data){
   } else {
     $title = $post->post_title;
   }
+
+
+
+  if($item_id) {
+    $counter = get_field('download_counter', $item_id);
+    if($counter) {
+      update_field( 'field_5f5f74c83892b', $counter + 1, $item_id );
+    } else {
+      update_field( 'field_5f5f74c83892b', 1, $item_id );
+    }
+
+  }
   
   $args = array(
     'post_type' => 'log_download',
@@ -41,8 +53,9 @@ function log_download($data){
     'message' => 'log download success',
     'data' => $post_id,
   ];
-  return $result;
 
+
+  return $result;
 }
 
 add_action('rest_api_init' , function(){
@@ -80,7 +93,7 @@ function get_log_download($data){
   $data=$data->get_params('GET');
   extract($data);
 
-  $item_id = !empty($item_id) ? $item_id : false;
+  $item_id      = !empty($item_id) ? $item_id : false;
   $per_page     = !empty($per_page) ? $per_page : 10;
   $page         = !empty($page) ? $page : true;
 
@@ -374,6 +387,7 @@ function get_log_search($data){
 
             
   $keyword = !empty($keyword) ? $keyword : false;
+  $category = !empty($category) ? $category : false;
   $page = !empty($term_id) ? $term_id : false;
   $per_page    = !empty($user) ? $user : false;
 
@@ -387,6 +401,8 @@ function get_log_search($data){
     $args = array(
       'post_type'       => 'log_search',
       'post_status'     => 'publish',
+      'posts_per_page'   => $per_page,
+      'paged'            => $page,
       's'               => $keyword,
     );
 
@@ -415,32 +431,44 @@ function get_log_search($data){
       'counter' => count($posts),
     ];
 
-  } else {
+  } elseif($category) {
 
     $results = [];
 
-    foreach ($keywords as $keyword) {
-      $args = array(
-        'post_type'       => 'log_search',
-        'post_status'     => 'publish',
-        's'               => $keyword,
-      );
+    $args = array(
+      'post_type'       => 'log_search',
+      'post_status'     => 'publish',
+      'posts_per_page'   => $per_page,
+      'paged'            => $page,
+      'meta_query' => array(
+        'relation' => 'OR',
+        array(
+            'key' => 'category',
+            'value' => '"' . $category . '"',
+            'compare' => 'LIKE'
+        ),
+        array(
+            'key' => 'category',
+            'value' => $category,
+            'compare' => '='
+        )
+      ),
+    );
 
-      $posts = get_posts( $args );
+    $posts = get_posts( $args );
 
-      $title = [];
-      $date = [];
-      $category = [];
-      $result = [];
-      $user = [];
-      
-      foreach ($posts as $post) {
-        $title  = $post->post_title;        
-        $date[] = get_the_date('r', $post->ID);
-        $category[] = get_field('category', $post->ID);
-        $result[] = get_field('results', $post->ID);
-        $user[] = get_field('user', $post->ID);
-      }
+    $title = [];
+    $date = [];
+    $category = [];
+    $result = [];
+    $user = [];
+    
+    foreach ($posts as $post) {
+      $title  = $post->post_title;        
+      $date = get_the_date('r', $post->ID);
+      $category = get_field('category', $post->ID);
+      $result = get_field('results', $post->ID);
+      $user = get_field('user', $post->ID);
 
       $results[] = [
         'keyword' => $title,
@@ -448,11 +476,43 @@ function get_log_search($data){
         'category' => $category,
         'results' => $result,
         'user' => $user,
-        'country' => count($posts),
       ];
-
     }
+
+  } else {
+
+    $results = [];
+
+    $args = array(
+      'post_type'       => 'log_search',
+      'post_status'     => 'publish',
+      'posts_per_page'   => $per_page,
+      'paged'            => $page,
+    );
+
+    $posts = get_posts( $args );
+
+    $title = [];
+    $date = [];
+    $category = [];
+    $result = [];
+    $user = [];
     
+    foreach ($posts as $post) {
+      $title  = $post->post_title;        
+      $date = get_the_date('r', $post->ID);
+      $category = get_field('category', $post->ID);
+      $result = get_field('results', $post->ID);
+      $user = get_field('user', $post->ID);
+
+      $results[] = [
+        'keyword' => $title,
+        'date' => $date,
+        'category' => $category,
+        'results' => $result,
+        'user' => $user,
+      ];
+    }
 
   }
 
@@ -480,7 +540,12 @@ add_action('rest_api_init' , function(){
         'validate_callback' => function($param,$request,$key){
           return true;
         }
-      ),    
+      ),   
+      'category' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),  
       'page' => array(
         'validate_callback' => function($param,$request,$key){
           return true;

@@ -1,57 +1,16 @@
-<?php
-function all_graphics($data){
+<?php 
+function get_graphics_search($data){
 
   $data=$data->get_params('GET');
   extract($data);
 
   $per_page     = !empty($per_page) ? $per_page : 10;
-  $page         = !empty($page) ? $page : true;
-  $searchText   = !empty($searchText) ? $searchText : false;
+  $page         = !empty($page)     ? $page     : true;
+  $searchText   = !empty($searchText)  ? $searchText : false;
   $category_id  = !empty($category) ? $category : 0;
-  $post_id      = !empty($post_id) ? $post_id : false;
-  
-  if($post_id) {
+
+  if($category_id == 25) {
     
-    $args = array(
-      'post_type' => 'graphics',
-      'p'         => $post_id
-    );
-    $posts = new WP_Query( $args );
-
-
-  } elseif($searchText != false) {
-      
-    if($category_id != 25)  {
-      $posts = SmartSearch($searchText, $category_id, $page, $per_page);
-    }
-
-  } else {
-
-    $args = array(
-      'post_type'        => 'graphics',
-      'posts_per_page'   => $per_page,
-      'paged'            => $page ,
-      'post_status'      => 'publish',
-    );
-
-    
-    if ( $category_id != false):
-      $args['tax_query'] = array(
-        array(
-          'taxonomy' => 'graphics-category',
-          'field'    => "term_id",
-          'terms'    => $category_id,
-        ),
-      );
-    endif;
-
-    $posts = new WP_Query( $args );
-
-  }
-
-
-  if($category_id == 25 && $searchText) {
-
     $results = GetIconsSearch($searchText, $category_id);
 
      if($results && $searchText != '' && $searchText != false) {
@@ -69,9 +28,10 @@ function all_graphics($data){
         'message' => 'icon Not Found',
       ];  
     }
-
   } else {
-    if ( $posts->have_posts() ) {
+    $posts = SmartSearch($searchText, $category_id, $page, $per_page);
+
+    if ( $posts) {
       foreach( $posts->posts as &$post ):
 
           $terms =  wp_get_post_terms($post->ID , 'graphics-category');
@@ -83,7 +43,6 @@ function all_graphics($data){
           
           $file = get_field('file_graphics' , $post->ID);
           $ext = pathinfo($file, PATHINFO_EXTENSION);
-
 
           $collocations = get_field('collocation_icons' , $post->ID);
 
@@ -108,11 +67,9 @@ function all_graphics($data){
           $post->AuthorLink = $link_author;
           $post->AuthorName = $text_author;
 
-
         unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);
         formatPost($post);
       endforeach;
-        
 
       $result = [
         "success" => true,
@@ -129,16 +86,14 @@ function all_graphics($data){
     }
   }
 
-
-
   return $result;
 
 }
 
 add_action('rest_api_init' , function(){
-  register_rest_route('wp/api/' ,'graphics/GetGraphics/',array(
+  register_rest_route('wp/api/' ,'get_graphics/search/',array(
     'methods' => 'GET',
-    'callback' => 'all_graphics',
+    'callback' => 'get_graphics_search',
     'args' => array(
       'per_page' => array(
         'validate_callback' => function($param, $request, $key){
@@ -156,11 +111,6 @@ add_action('rest_api_init' , function(){
         }
       ),
       'searchText'  => array(
-        'validate_callback' => function($param, $request, $key){
-          return true;
-        }
-      ),
-      'post_id'  => array(
         'validate_callback' => function($param, $request, $key){
           return true;
         }

@@ -163,8 +163,6 @@ function Get_icons_search($searchText, $term_id) {
 }
 
 
-
-
 function Get_keywords() {
 
   global $wpdb;
@@ -175,7 +173,268 @@ function Get_keywords() {
     $keywords[] = $post->post_title;
   }
 
-  
-
   return array_unique($keywords);
+}
+
+
+/**
+ * function get all Logic Search 
+ * @param (title - content - tag)
+ * return $ids
+ */
+
+function GetExactTitle($keyword) {
+
+  global $wpdb; 
+
+  $name = '%' . $wpdb->esc_like(stripslashes($keyword)) . '%'; //escape for use in LIKE statement
+  $sql = "select post_title, post_content, ID
+  from $wpdb->posts
+  where
+    (
+    post_title like %s
+    )
+    and post_status='publish' AND post_type='graphics'";
+
+  $sql = $wpdb->prepare($sql, $name, $name);
+  $results = $wpdb->get_results($sql, OBJECT);
+  
+  if($results) {
+    $ids = [];
+    foreach ($results as $key => $value) {
+    $ids[] = intval($value->ID);
+    }
+  } else {
+    $ids = [];
+  }
+
+  return $ids;
+}
+
+
+function GetExactContent($keyword) {
+
+  global $wpdb; 
+
+  $name = '%' . $wpdb->esc_like(stripslashes($keyword)) . '%'; //escape for use in LIKE statement
+  $sql = "select ID
+  from $wpdb->posts
+  where
+    (
+    post_content like %s
+    )
+    and post_status='publish' AND post_type='graphics'";
+
+  $sql = $wpdb->prepare($sql, $name, $name);
+  $results = $wpdb->get_results($sql, OBJECT);
+  
+  if($results) {
+    $ids = [];
+    foreach ($results as $key => $value) {
+    $ids[] = intval($value->ID);
+    }
+  } else {
+    $ids = [];
+  }
+  
+  return $ids;
+}
+
+function GetExactTag($keyword)
+{
+  $terms = explode(' ', $keyword);
+
+  $args = array(
+    'post_type'       => 'graphics',
+    'post_status'     => 'publish',
+    'tax_query' => array (
+      array(
+          'taxonomy'=>'graphics-tag',
+          'field'=>'slug',
+          'terms'=>$terms
+      )
+    )
+  );
+
+  $posts = get_posts($args);
+
+  if($posts) {
+    $ids = [];
+    foreach ($posts as $key => $value) {
+      $ids[] = $value->ID;
+    }
+  } else {
+    $ids = [];
+  }
+
+  return $ids;
+}
+
+function SmartSearch($keyword, $term_id, $paged, $per_page)
+{
+
+  $ids_title    = GetExactTitle($keyword);
+  $ids_tags     = GetExactTag($keyword);
+  $ids_content  = GetExactContent($keyword);
+
+  $results = array_merge($ids_title, $ids_tags, $ids_content);
+  $results = array_unique($results);
+
+  if($results) {
+    $args = array(
+      'post_type'       => 'graphics',
+      'post_status'     => 'publish',    
+      'paged'           => $paged,
+      'posts_per_page'  => $per_page,
+      'post__in'        => $results,
+      'orderby'         => 'post__in'
+    );
+
+    if ( $term_id != false):
+      $args['tax_query'] = array(
+        array(
+          'taxonomy' => 'graphics-category',
+          'field'    => "term_id",
+          'terms'    => $term_id,
+        ),
+      );
+    endif;
+
+    $posts = new WP_Query( $args );
+  } else {
+
+    $args = array(
+      'post_type'       => 'graphics',
+      'post_status'     => 'publish',    
+      'meta_key'        => 'download_counter',
+      'orderby'         => 'meta_value_num',
+      'paged'           => $paged,
+      'posts_per_page'  => $per_page,
+    );
+
+    if ( $term_id != false):
+      $args['tax_query'] = array(
+        array(
+          'taxonomy' => 'graphics-category',
+          'field'    => "term_id",
+          'terms'    => $term_id,
+        ),
+      );
+    endif;
+
+    if($term_id != 25) {
+      $posts = new WP_Query( $args );
+    } else {
+      $posts = false;
+    }
+        
+
+  }
+
+  return $posts;
+}
+
+function GetIconsSearch($searchText, $term_id) {
+
+  $args = array(
+    'post_type'        => 'graphics',
+    'post_status'      => 'publish',
+    'posts_per_page'   => -1,
+  );
+
+  $args['tax_query'] = array(
+    array(
+      'taxonomy' => 'graphics-category',
+      'field'    => "term_id",
+      'terms'    => $term_id,
+    ),
+  );
+
+  $posts = new WP_Query( $args );
+
+  $icons = [];
+
+  if ( $posts->have_posts() ) {
+    foreach( $posts->posts as $post ):
+
+      $collocations = get_field('collocation_icons' , $post->ID);
+
+      if($collocations) {
+        foreach ($collocations as $key => $value) {
+          $title = $value['file_icon']['title'];
+          $lower_title = strtolower($title);
+          $lower_search = strtolower($searchText);
+
+          if (strpos($lower_title, $lower_search ) !== false) {
+            $icons[] = $value['file_icon']['url'];
+          }
+        }
+      }
+    endforeach;
+  }
+
+  $mores = SmartSearch($searchText, $term_id, $paged, $per_page);
+
+  if($mores != null) {
+    if ( $mores->have_posts() ) {
+      foreach( $mores->posts as $post ):
+
+        $collocations = get_field('collocation_icons' , $post->ID);
+
+        if($collocations) {
+          foreach ($collocations as $key => $value) {
+            $title = $value['file_icon']['title'];
+              $icons[] = $value['file_icon']['url'];
+          }
+        }
+      endforeach;
+    }
+  }
+
+  if(empty($icons)) {
+    $args = array(
+      'post_type'       => 'graphics',
+      'post_status'     => 'publish',    
+      'meta_key'        => 'download_counter',
+      'orderby'         => 'meta_value_num',
+      'paged'           => $paged,
+      'posts_per_page'  => $per_page,
+    );
+
+    if ( $term_id != false):
+      $args['tax_query'] = array(
+        array(
+          'taxonomy' => 'graphics-category',
+          'field'    => "term_id",
+          'terms'    => $term_id,
+        ),
+      );
+    endif;
+
+    $posts = new WP_Query( $args );
+
+    if ( $posts->have_posts() ) {
+      foreach( $posts->posts as $post ):
+
+        $collocations = get_field('collocation_icons' , $post->ID);
+
+        if($collocations) {
+          foreach ($collocations as $key => $value) {
+            $title = $value['file_icon']['title'];
+              $icons[] = $value['file_icon']['url'];
+          }
+        }
+      endforeach;
+    }
+
+  }
+
+
+  $arrayName = [];
+
+  foreach ($icons as $key => $value) {
+    $arrayName[] = array('links' => $value,);
+  }
+
+  return $arrayName;
 }

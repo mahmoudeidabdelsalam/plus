@@ -9,9 +9,9 @@ function log_download($data){
   $data=$data->get_params('POST');
   extract($data);
 
-  $item_id = !empty($item_id) ? $item_id : false;
+  $item_id    = !empty($item_id) ? $item_id : false;
   $item_title = !empty($item_title) ? $item_title : false;
-  $user = !empty($user) ? $user : false;
+  $user       = !empty($user) ? $user : false;
 
   $post = get_post($item_id);
 
@@ -386,24 +386,22 @@ function get_log_search($data){
   extract($data);
 
             
-  $keyword = !empty($keyword) ? $keyword : false;
-  $category = !empty($category) ? $category : false;
-  $page = !empty($term_id) ? $term_id : false;
-  $per_page    = !empty($user) ? $user : false;
+  $keyword    = !empty($keyword) ? $keyword : false;
+  $category   = !empty($category) ? $category : false;
+  $page       = !empty($page) ? $page : false;
+  $per_page   = !empty($per_page) ? $per_page : 10;
 
-
- 
  
   $keywords = Get_keywords();
 
 
   if($keyword) {
     $args = array(
-      'post_type'       => 'log_search',
-      'post_status'     => 'publish',
-      'posts_per_page'   => $per_page,
-      'paged'            => $page,
-      's'               => $keyword,
+      'post_type'         => 'log_search',
+      'post_status'       => 'publish',
+      'posts_per_page'    => $per_page,
+      'paged'             => $page,
+      's'                 => $keyword,
     );
 
     $posts = get_posts( $args );
@@ -515,9 +513,6 @@ function get_log_search($data){
     }
 
   }
-
-
-
 
 
   $result = [

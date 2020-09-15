@@ -242,16 +242,30 @@ function GetExactContent($keyword) {
 
 function GetExactTag($keyword)
 {
-  $terms = explode(' ', $keyword);
+  $keywords = explode(' ', $keyword);
+
+  $tag_ids = [];
+
+  $tags = get_terms(array( 'taxonomy' => 'graphics-tag', 'hide_empty' => false,));
+
+  foreach ($tags as $tag ) {
+    $lower_slug = strtolower($tag->name);
+    $lower_keywords = strtolower($keywords[0]);
+    if (strpos($lower_slug, $lower_keywords ) !== false) {
+      $tag_ids[] = $tag->term_id;
+    }
+  }
+         
 
   $args = array(
     'post_type'       => 'graphics',
     'post_status'     => 'publish',
+    'posts_per_page'  => -1,
     'tax_query' => array (
       array(
           'taxonomy'=>'graphics-tag',
-          'field'=>'slug',
-          'terms'=>$terms
+          'field'=>'term_id',
+          'terms'=>$tag_ids
       )
     )
   );
@@ -267,6 +281,10 @@ function GetExactTag($keyword)
     $ids = [];
   }
 
+
+  // dd($ids);
+
+
   return $ids;
 }
 
@@ -279,6 +297,8 @@ function SmartSearch($keyword, $term_id, $paged, $per_page)
 
   $results = array_merge($ids_title, $ids_tags, $ids_content);
   $results = array_unique($results);
+
+
 
   if($results) {
     $args = array(
@@ -301,37 +321,38 @@ function SmartSearch($keyword, $term_id, $paged, $per_page)
     endif;
 
     $posts = new WP_Query( $args );
-  } else {
-
-    $args = array(
-      'post_type'       => 'graphics',
-      'post_status'     => 'publish',    
-      'meta_key'        => 'download_counter',
-      'orderby'         => 'meta_value_num',
-      'paged'           => $paged,
-      'posts_per_page'  => $per_page,
-    );
-
-    if ( $term_id != false):
-      $args['tax_query'] = array(
-        array(
-          'taxonomy' => 'graphics-category',
-          'field'    => "term_id",
-          'terms'    => $term_id,
-        ),
-      );
-    endif;
-
-    if($term_id != 25) {
-      $posts = new WP_Query( $args );
+    
+    if ( $posts->have_posts() ) {
+      $result_posts = $posts;
     } else {
-      $posts = false;
-    }
-        
+      $args = array(
+        'post_type'       => 'graphics',
+        'post_status'     => 'publish',    
+        'meta_key'        => 'download_counter',
+        'orderby'         => 'meta_value_num',
+        'paged'           => $paged,
+        'posts_per_page'  => $per_page,
+      );
 
+      if ( $term_id != false):
+        $args['tax_query'] = array(
+          array(
+            'taxonomy' => 'graphics-category',
+            'field'    => "term_id",
+            'terms'    => $term_id,
+          ),
+        );
+      endif;
+
+      if($term_id != 25) {
+        $result_posts = new WP_Query( $args );
+      } else {
+        $result_posts = false;
+      }
+    }
   }
 
-  return $posts;
+  return $result_posts;
 }
 
 function GetIconsSearch($searchText, $term_id) {

@@ -282,9 +282,6 @@ function GetExactTag($keyword)
   }
 
 
-  // dd($ids);
-
-
   return $ids;
 }
 
@@ -387,7 +384,11 @@ function GetIconsSearch($searchText, $term_id) {
           $lower_search = strtolower($searchText);
 
           if (strpos($lower_title, $lower_search ) !== false) {
-            $icons[] = $value['file_icon']['url'];
+            $icons[]  = [
+              'links'  => $value['file_icon']['url'],
+              'id'    => $post->ID,
+              'title' => $value['file_icon']['title'],
+            ];
           }
         }
       }
@@ -404,8 +405,11 @@ function GetIconsSearch($searchText, $term_id) {
 
         if($collocations) {
           foreach ($collocations as $key => $value) {
-            $title = $value['file_icon']['title'];
-              $icons[] = $value['file_icon']['url'];
+            $icons[]  = [
+              'links'  => $value['file_icon']['url'],
+              'id'    => $post->ID,
+              'title' => $value['file_icon']['title'],
+            ];
           }
         }
       endforeach;
@@ -418,8 +422,7 @@ function GetIconsSearch($searchText, $term_id) {
       'post_status'     => 'publish',    
       'meta_key'        => 'download_counter',
       'orderby'         => 'meta_value_num',
-      'paged'           => $paged,
-      'posts_per_page'  => $per_page,
+      'posts_per_page'  => 1,
     );
 
     if ( $term_id != false):
@@ -441,20 +444,25 @@ function GetIconsSearch($searchText, $term_id) {
 
         if($collocations) {
           foreach ($collocations as $key => $value) {
-            $title = $value['file_icon']['title'];
-              $icons[] = $value['file_icon']['url'];
+            $icons[]  = [
+              'links'  => $value['file_icon']['url'],
+              'id'    => $post->ID,
+              'title' => $value['file_icon']['title'],
+            ];
           }
-        }
+        }        
       endforeach;
     }
 
   }
 
 
+  
+
   $arrayName = [];
 
   foreach ($icons as $key => $value) {
-    $arrayName[] = array('links' => $value,);
+    $arrayName[] = $value;
   }
 
   return $arrayName;

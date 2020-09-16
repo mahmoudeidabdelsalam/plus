@@ -96,6 +96,8 @@ function get_log_download($data){
   $item_id      = !empty($item_id) ? $item_id : false;
   $per_page     = !empty($per_page) ? $per_page : 10;
   $page         = !empty($page) ? $page : true;
+  $client_id    = !empty($client_id) ? $client_id : false;
+
 
   
   if($item_id ) {
@@ -293,6 +295,11 @@ add_action('rest_api_init' , function(){
         }
       ),
       'page' => array(
+        'validate_callback' => function($param, $request, $key){
+          return is_numeric($param);
+        }
+      ),
+      'client_id' => array(
         'validate_callback' => function($param, $request, $key){
           return is_numeric($param);
         }

@@ -96,7 +96,21 @@ function get_log_download($data){
   $item_id      = !empty($item_id) ? $item_id : false;
   $per_page     = !empty($per_page) ? $per_page : 10;
   $page         = !empty($page) ? $page : true;
-  $client_id    = !empty($client_id) ? $client_id : false;
+  $token      = !empty($token) ? $token : false;
+  $permission = TokenPermission();
+  
+
+  if($token == $permission) {
+    $return = true;
+  } else {
+    $result = [
+      'code' => 401,
+      'message' => 'Sorry, you are not allowed to do that.',
+    ];    
+    return $result;
+    die();
+  }
+
 
 
   
@@ -299,11 +313,11 @@ add_action('rest_api_init' , function(){
           return is_numeric($param);
         }
       ),
-      'client_id' => array(
-        'validate_callback' => function($param, $request, $key){
-          return is_numeric($param);
+      'token' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
         }
-      ), 
+      ),
     )
   ));
 });
@@ -397,9 +411,22 @@ function get_log_search($data){
   $category   = !empty($category) ? $category : false;
   $page       = !empty($page) ? $page : false;
   $per_page   = !empty($per_page) ? $per_page : 10;
+  $token      = !empty($token) ? $token : false;
+  $permission = TokenPermission();
+  
 
- 
-  $keywords = Get_keywords();
+  if($token == $permission) {
+    $return = true;
+  } else {
+    $result = [
+      'code' => 401,
+      'message' => 'Sorry, you are not allowed to do that.',
+    ];    
+    return $result;
+    die();
+  }
+
+
 
 
   if($keyword) {
@@ -557,7 +584,12 @@ add_action('rest_api_init' , function(){
         'validate_callback' => function($param,$request,$key){
           return true;
         }
+      ), 
+      'token' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
       ),                 
-    )
+    ),
   ));
 });

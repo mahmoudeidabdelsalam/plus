@@ -467,3 +467,8 @@ function GetIconsSearch($searchText, $term_id) {
 
   return $arrayName;
 }
+
+
+function TokenPermission() {
+  return get_field('token_permission', 'option');
+}

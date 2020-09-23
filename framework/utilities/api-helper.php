@@ -347,6 +347,27 @@ function SmartSearch($keyword, $term_id, $paged, $per_page)
         $result_posts = false;
       }
     }
+  } else {
+    $args = array(
+      'post_type'       => 'graphics',
+      'post_status'     => 'publish',    
+      'meta_key'        => 'download_counter',
+      'orderby'         => 'meta_value_num',
+      'paged'           => $paged,
+      'posts_per_page'  => $per_page,
+    );
+
+    if ( $term_id != false):
+      $args['tax_query'] = array(
+        array(
+          'taxonomy' => 'graphics-category',
+          'field'    => "term_id",
+          'terms'    => $term_id,
+        ),
+      );
+    endif;
+
+    $result_posts = new WP_Query( $args );
   }
 
   return $result_posts;

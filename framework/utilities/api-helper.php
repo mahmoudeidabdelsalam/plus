@@ -285,6 +285,8 @@ function GetExactTag($keyword)
   return $ids;
 }
 
+
+
 function SmartSearch($keyword, $term_id, $paged, $per_page)
 {
 
@@ -295,6 +297,7 @@ function SmartSearch($keyword, $term_id, $paged, $per_page)
   $results = array_merge($ids_title, $ids_tags, $ids_content);
   $results = array_unique($results);
 
+  
 
 
   if($results) {
@@ -348,26 +351,7 @@ function SmartSearch($keyword, $term_id, $paged, $per_page)
       }
     }
   } else {
-    $args = array(
-      'post_type'       => 'graphics',
-      'post_status'     => 'publish',    
-      'meta_key'        => 'download_counter',
-      'orderby'         => 'meta_value_num',
-      'paged'           => $paged,
-      'posts_per_page'  => $per_page,
-    );
-
-    if ( $term_id != false):
-      $args['tax_query'] = array(
-        array(
-          'taxonomy' => 'graphics-category',
-          'field'    => "term_id",
-          'terms'    => $term_id,
-        ),
-      );
-    endif;
-
-    $result_posts = new WP_Query( $args );
+    $result_posts = false;
   }
 
   return $result_posts;
@@ -414,16 +398,16 @@ function GetIconsSearch($searchText, $term_id) {
         }
       }
     endforeach;
-  } else {
-  
-  
-    $page = 1;
+
+    $paged = 1;
     $per_page = 10;
 
     $mores = SmartSearch($searchText, $term_id, $paged, $per_page);
 
-    if ( $mores->have_posts() ) {
-      foreach( $mores->posts as $post ):
+    $posts = $mores;
+
+    if ( $posts ) {
+      foreach( $posts->posts as $post ):
 
         $collocations = get_field('collocation_icons' , $post->ID);
 
@@ -438,61 +422,22 @@ function GetIconsSearch($searchText, $term_id) {
         }
       endforeach;
     }
-
-  }
-
+  } 
 
 
   if(empty($icons)) {
-    $args = array(
-      'post_type'       => 'graphics',
-      'post_status'     => 'publish',    
-      'meta_key'        => 'download_counter',
-      'orderby'         => 'meta_value_num',
-      'posts_per_page'  => 1,
-    );
+    return false;
+  } else {
 
-    if ( $term_id != false):
-      $args['tax_query'] = array(
-        array(
-          'taxonomy' => 'graphics-category',
-          'field'    => "term_id",
-          'terms'    => $term_id,
-        ),
-      );
-    endif;
+    $arrayName = [];
 
-    $posts = new WP_Query( $args );
-
-    if ( $posts->have_posts() ) {
-      foreach( $posts->posts as $post ):
-
-        $collocations = get_field('collocation_icons' , $post->ID);
-
-        if($collocations) {
-          foreach ($collocations as $key => $value) {
-            $icons[]  = [
-              'links'  => $value['file_icon']['url'],
-              'id'    => $post->ID,
-              'title' => $value['file_icon']['title'],
-            ];
-          }
-        }        
-      endforeach;
+    foreach ($icons as $key => $value) {
+      $arrayName[] = $value;
     }
 
+    return $arrayName;
   }
 
-
-  
-
-  $arrayName = [];
-
-  foreach ($icons as $key => $value) {
-    $arrayName[] = $value;
-  }
-
-  return $arrayName;
 }
 
 

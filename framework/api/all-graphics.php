@@ -22,7 +22,42 @@ function all_graphics($data){
   } elseif($searchText != false) {
       
     if($category_id != 25)  {
-      $posts = SmartSearch($searchText, $category_id, $page, $per_page);
+      // $posts = SmartSearch($searchText, $category_id, $page, $per_page);
+      $SmartSearch = SmartSearch($searchText, $category_id, $page, $per_page);
+
+      
+
+
+      if ($SmartSearch) {
+        $result_posts = $SmartSearch;
+        $status_search = false;
+      } else {
+        $args = array(
+          'post_type'       => 'graphics',
+          'post_status'     => 'publish',    
+          'meta_key'        => 'download_counter',
+          'orderby'         => 'meta_value_num',
+          'paged'           => $paged,
+          'posts_per_page'  => $per_page,
+        );
+
+        if ( $category_id != false):
+          $args['tax_query'] = array(
+            array(
+              'taxonomy' => 'graphics-category',
+              'field'    => "term_id",
+              'terms'    => $category_id,
+            ),
+          );
+        endif;
+
+        $result_posts = new WP_Query( $args );
+
+        $status_search = true;
+      }
+
+      $posts = $result_posts;
+
     }
 
   } else {
@@ -54,19 +89,64 @@ function all_graphics($data){
 
     $results = GetIconsSearch($searchText, $category_id);
 
+    
      if($results && $searchText != '' && $searchText != false) {
       $result = [
         "success" => true,
         "code" => 200,
         "message" => 'Successfully retrieved',
+        "status" => true,
         "data" => $results,
       ];  
     } else {
+
+      $icons = [];
+      $args = array(
+        'post_type'       => 'graphics',
+        'post_status'     => 'publish',    
+        'meta_key'        => 'download_counter',
+        'orderby'         => 'meta_value_num',
+        'paged'           => $paged,
+        'posts_per_page'  => $per_page,
+      );
+
+      if ( $category_id != false):
+        $args['tax_query'] = array(
+          array(
+            'taxonomy' => 'graphics-category',
+            'field'    => "term_id",
+            'terms'    => $category_id,
+          ),
+        );
+      endif;
+
+      $result_posts = new WP_Query( $args );
+
+      if ( $result_posts->have_posts() ) {
+        foreach( $result_posts->posts as $post ):
+
+          $collocations = get_field('collocation_icons' , $post->ID);
+
+          if($collocations) {
+            foreach ($collocations as $key => $value) {
+              $icons[]  = [
+                'links'  => $value['file_icon']['url'],
+                'id'    => $post->ID,
+                'title' => $value['file_icon']['title'],
+              ];
+            }
+          }
+        endforeach;
+      }
+
+
       $result = [
         "success" => false,
         "code" => 404,
         "message" => 'Successfully retrieved',
         'message' => 'icon Not Found',
+        "status" => false,
+        "data" => $icons,
       ];  
     }
 
@@ -118,6 +198,7 @@ function all_graphics($data){
         "success" => true,
         "code" => 200,
         "message" => 'Successfully retrieved',
+        "status" => $status_search,
         "data" => $posts->posts,
       ];  
     } else {

@@ -414,11 +414,14 @@ function GetIconsSearch($searchText, $term_id) {
         }
       }
     endforeach;
-  }
+  } else {
+  
+  
+    $page = 1;
+    $per_page = 10;
 
-  $mores = SmartSearch($searchText, $term_id, $paged, $per_page);
+    $mores = SmartSearch($searchText, $term_id, $paged, $per_page);
 
-  if($mores != null) {
     if ( $mores->have_posts() ) {
       foreach( $mores->posts as $post ):
 
@@ -435,7 +438,10 @@ function GetIconsSearch($searchText, $term_id) {
         }
       endforeach;
     }
+
   }
+
+
 
   if(empty($icons)) {
     $args = array(

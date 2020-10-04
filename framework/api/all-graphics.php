@@ -80,6 +80,9 @@ function all_graphics($data){
       );
     endif;
 
+
+    $status_search = false;
+
     $posts = new WP_Query( $args );
 
   }
@@ -166,6 +169,7 @@ function all_graphics($data){
 
 
           $collocations = get_field('collocation_icons' , $post->ID);
+          $premium = get_field('item_premium' , $post->ID);
 
           $link_author = get_field('link_author' , $post->ID);
           $text_author = get_field('text_author' , $post->ID);
@@ -187,6 +191,7 @@ function all_graphics($data){
           $post->Tags = $tags;
           $post->AuthorLink = $link_author;
           $post->AuthorName = $text_author;
+          $post->premium = $premium;
 
 
         unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);

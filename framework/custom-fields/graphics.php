@@ -281,7 +281,7 @@ acf_add_local_field_group(array(
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
-				'width' => '',
+				'width' => '50',
 				'class' => '',
 				'id' => '',
 			),
@@ -292,6 +292,25 @@ acf_add_local_field_group(array(
 			'min' => '',
 			'max' => '',
 			'step' => '',
+    ),
+    array(
+			'key' => 'field_5f12425532747726bc859e',
+			'label' => 'Product premium',
+			'name' => 'item_premium',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '50',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+			'ui' => 1,
+			'ui_on_text' => 'Yes',
+			'ui_off_text' => 'No',
 		),
 	),
 	'location' => array(
@@ -300,6 +319,55 @@ acf_add_local_field_group(array(
 				'param' => 'post_type',
 				'operator' => '==',
 				'value' => 'graphics',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+));
+
+endif;
+
+
+
+if( function_exists('acf_add_local_field_group') ):
+
+acf_add_local_field_group(array(
+	'key' => 'group_5f74755231e8d',
+	'title' => 'Membership',
+	'fields' => array(
+		array(
+			'key' => 'field_5f747726b859e',
+			'label' => 'Membership premium',
+			'name' => 'user_premium',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+			'ui' => 1,
+			'ui_on_text' => 'Yes',
+			'ui_off_text' => 'No',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'user_role',
+				'operator' => '==',
+				'value' => 'all',
 			),
 		),
 	),

@@ -14,6 +14,11 @@
     $author_facebook = get_field('facebook_user', 'user_'. $author_id);
     $author_twitter = get_field('twitter_user', 'user_'. $author_id);
     $author_linkedin = get_field('linkedin_user', 'user_'. $author_id);
+
+
+    $premium = get_field('item_premium');
+
+    dd($premium);
   @endphp
 
 

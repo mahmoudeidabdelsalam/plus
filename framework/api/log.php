@@ -429,7 +429,7 @@ function get_log_search($data){
 
 
 
-  if($keyword && empty($category)) {
+  if($keyword) {
     $args = array(
       'post_type'         => 'log_search',
       'post_status'       => 'publish',

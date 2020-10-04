@@ -32,6 +32,7 @@ function action_posts($data){
   $author_link  = !empty($author_link) ? $author_link : false;
   $author_name  = !empty($author_name) ? $author_name : false;
   $collocations = !empty($collocations) ? $collocations : false;
+  $premium      = !empty($premium) ? $premium : 0;
 
 
   $args = array(
@@ -76,6 +77,7 @@ function action_posts($data){
           update_field( 'field_5d43723a031b2', $file_id, $post_id );
           update_field( 'field_5f2a851e12e12e12e42d3b1a', $author_name, $post_id );
           update_field( 'field_5f2a8523de123312231233b19', $author_link, $post_id );
+          update_field( 'field_5f12425532747726bc859e', $premium, $post_id );
         }
         
         if($image) {
@@ -240,6 +242,11 @@ add_action('rest_api_init' , function(){
           return true;
         }
       ),
+      'premium' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
     )
   ));
 });
@@ -281,6 +288,7 @@ function get_api_posts($data){
   $author_link  = !empty($author_link) ? $author_link : false;
   $author_name  = !empty($author_name) ? $author_name : false;
   $collocations = !empty($collocations) ? $collocations : false;
+  $premium = !empty($premium) ? $premium : 0;
 
   $args = array(
     'count_total'  => false,
@@ -328,6 +336,7 @@ function get_api_posts($data){
           update_field( 'field_5d43723a031b2', $file_id, $graphics );
           update_field( 'field_5f2a851e12e12e12e42d3b1a', $author_name, $graphics );
           update_field( 'field_5f2a8523de123312231233b19', $author_link, $graphics );
+          update_field( 'field_5f12425532747726bc859e', $premium, $post_id );
         }
         
         if($image) {
@@ -500,6 +509,11 @@ add_action('rest_api_init' , function(){
           return true;
         }
       ), 
+      'premium' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
     )
   ));
 });
@@ -582,6 +596,100 @@ add_action('rest_api_init' , function(){
         }
       ),  
       'post_id' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
+    )
+  ));
+});
+
+
+
+function edit_premium_posts($data){
+
+  $data=$data->get_params('POST');
+  extract($data);
+
+  $email = !empty($email) ? $email : false;
+  $password = !empty($password) ? $password : false;
+  $post_id = !empty($post_id) ? $post_id : "post_id";
+
+
+  $args = array(
+    'count_total'  => false,
+    'fields'       => 'all',
+  ); 
+  
+  $users = get_users( $args );
+
+  if($email && $password) {
+
+    $emails = [];
+    $passwords = [];
+
+    foreach ($users as $user) {
+      $passwords[] = $user->user_pass;
+      $emails[] =  $user->user_email;
+    }
+
+    $user = get_user_by( 'email', $email );
+
+    if (in_array($email, $emails) && wp_check_password( $password, $user->data->user_pass, $user->ID)) { 
+     
+      $graphics = wp_update_post(array (
+        'post_type' => 'graphics',
+        'ID'           => $post_id,
+        'post_status' => 'publish',
+      ));
+
+
+      if ($graphics) {
+        update_field( 'field_5f12425532747726bc859e', $premium, $post_id );
+      }
+
+      $message = 'edit item success';
+
+    } else { 
+      $message = 'Try to login again (login or password) error';
+    } 
+    $result = [
+      'success' => true,
+      'code' => 200,
+      'message' => $message,
+    ];
+    return $result;
+  } else {
+    $result = [
+      'success' => false,
+      'code' => 404,
+      'message' => 'login or password not fund',
+    ];
+    return $result;
+  }
+}
+
+add_action('rest_api_init' , function(){
+  register_rest_route('wp/api/' ,'post/premium',array(
+    'methods' => 'POST',
+    'callback' => 'edit_premium_posts',
+    'args' => array(
+      'email' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
+      'password' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),  
+      'post_id' => array(
+        'validate_callback' => function($param,$request,$key){
+          return true;
+        }
+      ),
+      'premium' => array(
         'validate_callback' => function($param,$request,$key){
           return true;
         }

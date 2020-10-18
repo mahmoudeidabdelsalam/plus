@@ -36,6 +36,8 @@ function all_users($data){
     }
 
 
+    $premium = get_field('user_premium', 'user_'. $userId);
+
     $email = strtolower($email);
 
 
@@ -49,20 +51,21 @@ function all_users($data){
 
     $array =  [
       'IsSuccess' => $login,
-      'IsAdmin' => $admin
+      'IsAdmin'   => $admin,
+      'IsPremium' => $premium
     ];
 
     $result = [
       'success' => true,
-      'code' => 200,
+      'code'    => 200,
       'message' => $message,
-      'data' => $array,
+      'data'    => $array,
     ];
     return $result;
   } else {
     $result = [
       'success' => false,
-      'code' => 404,
+      'code'    => 404,
       'message' => 'login or password not fund',
     ];
     return $result;
@@ -87,10 +90,6 @@ add_action('rest_api_init' , function(){
     )
   ));
 });
-
-
-
-
 
 
 

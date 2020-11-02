@@ -93,7 +93,7 @@ function get_log_download($data){
   $data=$data->get_params('GET');
   extract($data);
 
-  $item_id      = !empty($item_id) ? $item_id : false;
+  $item_id      = !empty($post_id) ? $post_id : false;
   $per_page     = !empty($per_page) ? $per_page : 10;
   $page         = !empty($page) ? $page : true;
   $token      = !empty($token) ? $token : false;
@@ -117,6 +117,7 @@ function get_log_download($data){
   if($item_id ) {
     $args = array(
       'post_type' => 'log_download',
+      'posts_per_page'   => -1,
       'meta_query' => array(
           'relation' => 'OR',
           array(
@@ -201,6 +202,7 @@ function get_log_download($data){
         
           $args = array(
             'post_type' => 'log_download',
+            'posts_per_page'   => -1,
             'meta_query' => array(
                 'relation' => 'OR',
                 array(
@@ -298,7 +300,7 @@ add_action('rest_api_init' , function(){
     'methods' => 'GET',
     'callback' => 'get_log_download',
     'args' => array(
-      'item_id' => array(
+      'post_id' => array(
         'validate_callback' => function($param,$request,$key){
           return true;
         }

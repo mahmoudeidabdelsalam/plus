@@ -1,3 +1,4 @@
+@php header("Access-Control-Allow-Origin: *"); @endphp
 <!doctype html>
 <html {!! get_language_attributes() !!}>
   @include('partials.head')

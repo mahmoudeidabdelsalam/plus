@@ -48,8 +48,11 @@ function all_graphics($data){
             }
           }
 
+
+          
+
           $post->Id           = $post->ID;
-          $post->Content = get_field('file_graphics' , $post->ID);
+          $post->Content = base64_encode(get_field('file_graphics' , $post->ID));
           $post->Collocation = $base64;
 
 

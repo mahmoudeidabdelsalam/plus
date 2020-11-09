@@ -448,7 +448,7 @@ function TokenPermission() {
 
 
 
-function getDataURI($image, $mime = '') {
+function getDataURI($image) {
   $arrContextOptions=array(
     "ssl"=>array(
         "verify_peer"=>false,

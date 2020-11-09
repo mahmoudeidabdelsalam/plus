@@ -444,3 +444,17 @@ function GetIconsSearch($searchText, $term_id) {
 function TokenPermission() {
   return get_field('token_permission', 'option');
 }
+
+
+
+
+function getDataURI($image, $mime = '') {
+  $arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+  );  
+
+	return 'data:image/svg+xml;base64,'.base64_encode(file_get_contents($image, false, stream_context_create($arrContextOptions)));
+}

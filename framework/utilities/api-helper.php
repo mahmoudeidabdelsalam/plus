@@ -456,5 +456,5 @@ function getDataURI($image) {
     ),
   );  
 
-	return 'data:image/svg+xml;base64,'.base64_encode(file_get_contents($image, false, stream_context_create($arrContextOptions)));
+	return 'data:image/svg+xml;base64,'.base64_encode(file_get_contents($image));
 }

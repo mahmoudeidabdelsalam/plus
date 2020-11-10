@@ -7,6 +7,7 @@ function get_general_settings(){
     'links' => get_field('links_plus_app', 'option'),
     'scripts' => get_field('scripts_head', 'option'),
     'advertisement' => get_field('advertisement', 'option'),
+    'notification' => get_field('url_notification', 'option'),
   ];
 
   $result = [

@@ -37,23 +37,23 @@ function all_graphics($data){
       foreach( $posts->posts as &$post ):
 
           
-          // $collocations = get_field('collocation_icons' , $post->ID);
+          $collocations = get_field('collocation_icons' , $post->ID);
          
 
-          // $base64 = [];
+          $base64 = [];
 
-          // if($collocations) {
-          //   foreach ($collocations as $icon) {
-          //     $base64[] = base64_encode($icon["file_icon"]["url"]);
-          //   }
-          // }
+          if($collocations) {
+            foreach ($collocations as $icon) {
+              $base64[] = getDataURI($icon["file_icon"]["url"]);
+            }
+          }
 
 
           
 
           $post->Id           = $post->ID;
-          $post->Content = getDataURI(get_field('file_graphics' , $post->ID));
-          // $post->Collocation = $base64;
+          // $post->Content = getDataURI(get_field('file_graphics' , $post->ID));
+          $post->Collocation = $base64;
 
 
         unset($post->ID, $post->post_name, $post->post_type, $post->post_excerpt);

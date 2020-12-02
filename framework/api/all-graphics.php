@@ -12,14 +12,21 @@ function all_graphics($data){
   $base64       = !empty($base64) ? $base64 : false;
 
   
-  if($base64) {
-
+  if($base64 && $post_id) {
+    
+    
     $args = array(
-      'post_type'       => 'graphics',
-      'post_status'     => 'publish', 
-      'paged'           => $page,
-      'posts_per_page'  => $per_page,
+      'post_type' => 'graphics',
+      'p'         => $post_id
     );
+    // $posts = new WP_Query( $args );
+
+    // $args = array(
+    //   'post_type'       => 'graphics',
+    //   'post_status'     => 'publish', 
+    //   'paged'           => $page,
+    //   'posts_per_page'  => $per_page,
+    // );
 
     if ( $category_id != false):
       $args['tax_query'] = array(
